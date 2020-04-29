@@ -232,7 +232,7 @@ import {
 1. Well, [**this is Git**](https://xkcd.com/1597/), [**you'll need it**](/assets/images/y-u-no-git.png).
    <div><strong>GitHub</strong> <sup><strong><a href="https://github.com/about/facts" title="GitHub Facts">[1]</a><a href="https://github.com/about/milestones" title="GitHub Milestones">[2]</a><a href="https://github.com/features" title="How developers work">[3]</a><a href="https://github.blog" title="The GitHub Blog">[4]</a><a href="https://education.github.com" title="GitHub Education">[5]</a><a href="https://help.github.com" title="GitHub Help">[6]</a><a href="https://lab.github.com" title="GitHub Learning Lab">[7]</a></strong></sup> will host it for you. First things first, skim through <a href="https://guides.github.com/introduction/flow/"><strong>Understanding the GitHub flow</strong></a> and <a href="https://guides.github.com/activities/hello-world/"><strong>Hello World</strong></a> guides to get an overview of terminology and core concepts <sup><strong><a href="https://git-scm.com/docs/gitglossary" title="gitglossary">[1]</a></strong></sup></div>
 2. Open up [**GitHub**](https://github.com/) and sign in. Create a new repository named **"homepage"** (e.g. **volodymyr-kushnir/homepage**), set description to "My very own personal website. Basically this is just a résumé.", initialize with **README**, ignore **.gitignore**, but choose **"MIT License"**
-3. Add topics _(e.g. "personal website homepage resume gh-pages html css binary-studio-academy bsa19")_
+3. Add topics _"personal website homepage resume gh-pages html css binary-studio-academy bsa20"_
   <FacebookMessage small subtle>
     Hmmm, adding proper topics helps to SEO your repository...
   </FacebookMessage>
@@ -258,7 +258,7 @@ import {
       Hey, c'mon fam, are you even trying?! I've asked you to put tasks into projects, so puh-leeeeeze!
    </div>
 
-7. Go to **Settings — Collaborators** and add a collaborator
+7. Go to **Settings — Manage access** and invite a collaborator
 8. Go to **Settings — Branches** and set default branch to `develop`, lock `master` away
 9. Create **index.html** using GitHub online editor and the snippet below:
    ```html
@@ -278,7 +278,7 @@ import {
      That's right, <code>&amp;#x1F609;</code> is a <a href="http://unicode.org/emoji/charts-12.0/full-emoji-list.html#1f609"><strong>Unicode code for an emoji</strong></a>. BTW, please give your commits meaningful messages, i.e. 🤗"Updated Résumé Contacts block (fixes #23)" instead of 🤮"qwerty12%._3456". Maybe even <a href="https://help.github.com/articles/closing-issues-using-keywords/"><strong>use keywords to close issues</strong></a>!
    </div>
 
-11. Create a pull request into <code>master</code>, set metadata _(reviewers, assignees, labels, projects, milestones)_, merge pull request using **Create merge commit**
+11. Create a pull request into <code>master</code> and set title _"First release to production"_, set metadata _(reviewers, assignees, labels, projects, milestones)_, merge pull request using **Create merge commit**
 12. Go to **Settings — Options** and set up **GitHub Pages**, update repository description with the proper **website** link _(you might also want to learn how to host a static website powered by Jekyll in [**Getting Started with GitHub Pages**](https://guides.github.com/features/pages/))_
 13. Now that your repository is set up, you could share the link with the customer, poke around with your repository, see what's possible, explore, follow people, [**Be social**](https://guides.github.com/activities/socialize/)
     <div class="bubble small subtle">
@@ -364,7 +364,7 @@ Let's download the repository using the command line. [**Git Handbook**](https:/
       На майбутнє — зміни, які ще не були коммітнуті (файли відредаговані і збережені, але не коммітнуті до історії), можна відмінити командою <code>git checkout .</code> (також замість <code>.</code> можна вказувати конкретні файли)
     </div>
 
-11. Now switch to your primary branch (`git checkout develop`) and merge your latest developments into this branch by running `git merge patch/README.md`. Push to the remote with `git push`
+11. Now switch to your primary branch (`git checkout develop`) and merge your latest developments into this branch by running `git merge patch/README.md`. Push to the remote with `git push --tags`
 
     <div class="bubble small subtle">
       Також можна мерджити гілки, використовуючи <code>git merge --squash patch/README.md</code> (зліпить всі локальні комміти в один і накатає поверх базової гілки, тим самим "замовчує" локальну історію), або ж <code>git rebase</code> (спочатку переключиться на останній комміт базової гілки, а потім вже поверху "переграє" всі локальні зміни)
