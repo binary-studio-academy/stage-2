@@ -1,8 +1,8 @@
 module.exports = {
   pathPrefix: `/stage-2`,
   siteMetadata: {
-    title: `Binary Studio Academy 2019 • Stage 2`,
-    description: `Lectures for the 2nd stage of the Binary Studio Academy 2019`,
+    title: `Binary Studio Academy 2020`,
+    description: `Lectures for the 2nd stage of the Binary Studio Academy 2020`,
     author: ``
   },
   plugins: [
