@@ -111,7 +111,7 @@ import SnippetL03S16 from "./assets/snippets/snippet-l03-s16.mdx";
     </div>
     <div class="profile">
       <h3 class="name">Роман Саган</h3>
-      <ul class="contacts">
+      {/* <ul class="contacts">
         <li>
           <a href="https://www.facebook.com/roman.sahan.4" rel="author" class="facebook">
             <FontAwesomeIcon icon={faFacebookSquare} className="icon" />
@@ -130,7 +130,7 @@ import SnippetL03S16 from "./assets/snippets/snippet-l03-s16.mdx";
             <span>roman-sahan</span>
           </a>
         </li>
-      </ul>
+      </ul> */}
       <p class="about">
         Роман пройшов Академію у 2016-му і залишився у <a href="https://binary-studio.com"><strong>Binary Studio</strong></a>. Працює на проекті, що візуалізує величезну кількість даних за допомогою <a href="https://reactjs.org/"><strong>React</strong></a>. Любить чистий і гарно структурований код, підкорювати гори і фреймворки та з задоволенням дивиться і грає у футбол ⚽.
       </p>
@@ -1198,172 +1198,6 @@ As usual, just `npm install css-loader style-loader --save-dev` and edit <strong
 
 <hr />
 
-<h4>👊 <strong>Добити проект</strong></h4>
-<p>Можна продовжити в свому репозиторії (якщо теж складав його по ходу лекції), а можна і склонувати <a href="https://github.com/binary-studio-academy/stage-2-es6-for-everyone"><strong>готовий стартер</strong></a>. А далі:</p>
-<ol class="inverted">
-  <li>У класі <code>FighterService</code> створити метод для отримання детальної інформації про бійця. Додати можливість її перегляду — для цього реалізувати метод, який би опрацьовував клік по бійцю і, якщо інформації про нього ще немає на клієнті, то надіслати запит і записати інформацію у колекцію. Дані можна відобразити у вигляді невеликого діалогового вікна з можливістю їх редагування.</li>
-  <li>
-    Створити клас <code>Fighter</code>, який міститиме інформацію необхідну бійцю для бою (<code>name</code>, <code>health</code>, <code>attack</code>, <code>defense</code>, etc.), а також методи
-    <ul>
-      <li>
-        <code>getHitPower</code>, який би розраховував силу удару <em>(кількість завданої шкоди здоров'ю противника)</em> за формулою <code>power = attack * criticalHitChance;</code>, де <code>criticalHitChance</code> — рандомне число від 1 до 2,
-      </li>
-      <li>
-        <code>getBlockPower</code>, який би розраховував силу блоку <em>(амортизація удару противника)</em> за формулою <code>power = defense * dodgeChance;</code>, де <code>dodgeChance</code> — рандомне число від 1 до 2.
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>Створити функцію <code>fight</code>, яка прийматиме бійців як параметри та запускатиме процес гри. Гравці наносять удари один одному, а рівень їхнього <code>health</code> зменшується на <code>getHitPower - getBlockPower</code> <em>(або ж 0, якщо боєць "ухилився" від удару повністю)</em>. Якщо один із них помирає, то гра закінчується і ім'я переможця виводиться на екран.</p>
-    <div class="bubble small subtle">
-      Хід бійки може бути довільним — наприклад, бійці можуть наносити удари по черзі, чи з певним інтервалом, або ж можуть це робити за допомогою певного UI елементу на сторінці
-    </div>
-  </li>
-  <li>Cтворити додаткові елементи для реалізації гри — елемент для вибору бійців для бійки (може бути звичайний "<input type="checkbox" />"), кнопка, яка починає бійку, індикатор здоров'я, тощо.</li>
-</ol>
-<div className="grading-hometask">
-  <Accordion>
-    <Accordion.Header>
-      <FontAwesomeIcon icon={faQuestionCircle} />
-      <span className="title"><strong>Як буде оцінюватися проект</strong></span>
-      <span className="icon">
-        <FontAwesomeIcon icon={faChevronRight} fixedWidth />
-      </span>
-    </Accordion.Header>
-    <Accordion.Body>
-      <div className="container">
-        <div className="columns">
-          <div className="column">
-            Завдання комплексне, тому й оцінюватися буде в п'яти напрямках, а середнє арифметичне тих п'яти чисел і буде кінцевою оцінкою:
-          </div>
-        </div>
-        <small>
-          <div className="columns">
-            <div className="column col-4">
-              <div className="panel">
-                <div className="panel-header">
-                  <div className="panel-title">
-                    <h6>
-                      <strong>Matching requirements</strong>
-                      <span className="text-gray"><small>#1</small></span>
-                    </h6>
-                  </div>
-                </div>
-                <div className="panel-body">
-                  <p>Впровадьте всі необхідні features і постарайтеся виловити з них всі баги.</p>
-                </div>
-              </div>
-            </div>
-            <div className="column col-4">
-              <div className="panel">
-                <div className="panel-header">
-                  <div className="panel-title">
-                    <h6>
-                      <strong>Usage of ES features</strong>
-                      <span className="text-gray"><small>#2</small></span>
-                    </h6>
-                  </div>
-                </div>
-                <div className="panel-body">
-                  <p><code>rest</code>, <code>spread</code>, <code>const</code>, <code>let</code>, тощо. Є в коді <code>var</code>? Є мінус бал. Пам-пам! 😆</p>
-                </div>
-              </div>
-            </div>
-            <div className="column col-4">
-              <div className="panel">
-                <div className="panel-header">
-                  <div className="panel-title">
-                    <h6>
-                      <span>
-                        <strong>UI</strong>
-                        <span style={{ fontWeight: 300 }}> / </span>
-                        <span style={{ fontWeight: 900 }}>UX</span>
-                      </span>
-                      <span className="text-gray"><small>#3</small></span>
-                    </h6>
-                  </div>
-                </div>
-                <div className="panel-body">
-                  Якось нормально воно все має бути. Клацнув кнопку — запустився бій.
-                </div>
-              </div>
-            </div>
-            <div className="column col-4">
-              <div className="panel">
-                <div className="panel-header">
-                  <div className="panel-title">
-                    <h6>
-                      <span>
-                        <strong>Readability</strong>
-                        <span style={{ fontWeight: 300 }}> / </span>
-                        <span style={{ fontWeight: 900 }}>Reusability</span>
-                      </span>
-                      <span className="text-gray"><small>#4</small></span>
-                    </h6>
-                  </div>
-                </div>
-                <div className="panel-body">
-                  <a href="https://en.wikipedia.org/wiki/KISS_principle">Keep it simple, stupid</a>, <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">don't repeat yourself</a>. Охайним код повинен бути, чистим.
-                </div>
-              </div>
-            </div>
-            <div className="column col-4">
-              <div className="panel">
-                <div className="panel-header">
-                  <div className="panel-title">
-                    <h6>
-                      <strong><span role="img" aria-label="wow">🤯</span> "wow"-factor</strong>
-                      <span className="text-gray"><small>#5</small></span>
-                    </h6>
-                  </div>
-                </div>
-                <div className="panel-body">
-                  Творчість, старанність, увага до деталей, гумор, оригінальність, "што-о-о-о?!".
-                </div>
-              </div>
-            </div>
-          </div>
-        </small>
-      </div>
-      <RadarChart
-        labels={[
-          "Matching requirements",
-          "Usage of ES features",
-          "UI / UX",
-          "Readability / Reusability",
-          "\"wow\"-factor"
-        ]}
-        datasets={[{
-          label: "You",
-          data: [2, 10, 3, 10, 4],
-          dragData: true,
-          borderColor: "rgba(0, 173, 238, 1)",
-          backgroundColor: "rgba(0, 173, 238, 0.125)",
-          pointBorderColor: "white",
-          pointBackgroundColor: context => context.dataIndex % 2 === 0 ? "rgb(255, 199, 18)" : "rgb(236, 24, 72)",
-          pointHoverBorderColor: "white",
-          pointRadius: 5,
-          pointHoverRadius: 8,
-          pointBorderWidth: 3,
-          pointHoverBorderWidth: 3,
-          pointHitRadius: 30
-        }, {
-          label: "Joe Average",
-          data: [2, 10, 3, 10, 4],
-          dragData: false,
-          borderColor: "rgba(0, 0, 0, 0.1)",
-          backgroundColor: "rgba(0, 0, 0, 0.05)",
-          pointRadius: 0,
-          pointHitRadius: 0,
-          pointHoverRadius: 0
-        }]}
-      />
-    </Accordion.Body>
-  </Accordion>
-</div>
-
-<hr />
-
 <ThatsAllFolks />
 
 <VideoWrapper duration="20 сек">
@@ -1376,7 +1210,7 @@ As usual, just `npm install css-loader style-loader --save-dev` and edit <strong
 
 export const metadata = {
   orderId: 2,
-  author: "Роман Саган",
+  author: "",
   title: "ES6 for everyone",
   description: "Роман швиденько розказує про основні поняття <strong>JavaScript</strong>, потім пише фронтенд для простої інтерактивної веб-сторінки, використовуючи <strong>DOM API</strong> для створення елементів та найбільш популярні функції <strong>ES6</strong> для обробки даних, а також пояснює про модулі, транспайлери, бандлери.",
   keywords: ["hola", "guapa"],
