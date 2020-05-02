@@ -5,6 +5,8 @@ import { faChevronRight } from "@fortawesome/pro-regular-svg-icons";
 import { faGithub, faStackOverflow } from "@fortawesome/free-brands-svg-icons";
 import { alexandrTovmach2018Avatar } from "../../../assets/images/avatars/intro-rounded";
 /* Images */
+import npmLogoImage from "./assets/images/npm.svg";
+import yarnLogoImage from "./assets/images/yarn.svg";
 import microservicesImage from "./assets/images/microservice.jpg";
 import networkImage from "./assets/images/network.jpg";
 import clientServerModelImage from "./assets/images/client-server-model.png";
@@ -484,7 +486,7 @@ _4. Поэтому лучше правильно оформить свою фу�
         </div>
       </div>
       <div className="panel-body">
-        <a href="https://www.npmjs.com"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/1280px-Npm-logo.svg.png" /></a>
+        <a href="https://www.npmjs.com"><img src={npmLogoImage} /></a>
         Основные инструменты разработки JavaScript, которые помогут вам быстрее выйти на рынок и создавать мощные приложения с использованием современного открытого исходного кода.
       </div>
     </div>
@@ -500,7 +502,7 @@ _4. Поэтому лучше правильно оформить свою фу�
         </div>
       </div>
       <div className="panel-body">
-        <a href="https://yarnpkg.com"><img src="https://yarnpkg.com/assets/og_image.png" /></a>
+        <a href="https://yarnpkg.com"><img src={yarnLogoImage} /></a>
         Быстрое, надёжное и безопасное управление зависимостями.
       </div>
     </div>
