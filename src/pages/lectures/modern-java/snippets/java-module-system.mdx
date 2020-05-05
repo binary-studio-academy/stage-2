@@ -1,0 +1,12 @@
+```java
+//module declaration
+module com.foo.bar {
+    //runtime dependency
+    requires com.foo.baz;
+    //compile time dependency
+    requires static com.foo.qux;
+    //exposed APIs
+    exports com.foo.bar.alpha;
+    exports com.foo.bar.beta;
+}
+```
