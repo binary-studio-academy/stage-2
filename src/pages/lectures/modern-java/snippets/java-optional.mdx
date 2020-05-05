@@ -1,0 +1,28 @@
+```java
+public class OptionalExample {
+
+    //Find first integer that is bigger or equals to needle
+    public static String noOtional(Integer needle, List<Integer> haystack) {
+        Integer found = null;
+        for (var number : haystack) {
+            if (number > needle) {
+                found = number;
+                break;
+            }
+        }
+
+        return found == null ? "Not found" : "Found number " + found;
+    }
+    //Find first integer that is bigger or equals to needle
+    public static String otionalAndStream(Integer needle, List<Integer> haystack) {
+        return haystack
+                .stream() //convert to stream
+                .filter(number -> number > needle) // take only numbers > needle
+                .findFirst() // Terminate stream when first found
+                .map(found -> "Found number " + found) // convert to string if number present
+                .orElse("Not found"); //else return default text
+    }
+
+}
+
+```

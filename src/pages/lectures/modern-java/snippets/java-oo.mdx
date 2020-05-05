@@ -1,0 +1,60 @@
+```java
+//interface
+interface Fooer{
+ void foo();
+}
+
+class Clazz implements Fooer{
+ @Override
+ public void foo(){
+  System.out.println("I'm foo");
+ }
+}
+
+// Inheritance & visibility modifiers
+package foo.bar.baz;
+
+public class Donor{
+  private String a = "Private";
+  String b = "Package level";
+  protected String c = "Protected";
+  public String d = "Public";
+}
+
+public class RecipientA{
+ public void run(Donor donor){
+  //not ok
+  System.out.println(donor.a);
+  //ok
+  System.out.println(donor.b);
+  System.out.println(donor.c);
+  System.out.println(donor.d);
+ }
+}
+
+package foo.bar.qux;
+
+public class RecipientB{
+ public void run(Donor donor){
+  //not ok
+  System.out.println(donor.a);
+  System.out.println(donor.b);
+  System.out.println(donor.c);
+  //ok
+  System.out.println(donor.d);
+ }
+}
+
+public class RecipientC extends Donor{
+ public void run(Donor donor){
+  //not ok
+  System.out.println(donor.a);
+  System.out.println(donor.b);
+  //ok
+  System.out.println(this.c);
+  System.out.println(donor.c);
+  System.out.println(this.d);
+  System.out.println(donor.d);
+ }
+}
+```

@@ -1,0 +1,50 @@
+```java
+    //Annotation is optional
+    @FunctionalInterface
+    interface Greeter {
+            String greet(String name);
+    }
+    
+    public class FunctionalInterfaces {
+        public static void main(String[] args) {
+            
+            //Anonymous class
+            greetWorld(new Greeter() {
+                        @Override
+                        public String greet(String name) {
+                            return "Hello, " + name;
+                        }
+             });
+            
+            //Basic lambda
+            greetWorld(name -> "Hello, " + name);
+            
+            //For more than one statement in lambda body - wrap it into braces
+            greetWorld((String name) -> {
+                return "Hello, " + name;
+             });
+            
+            //For more than one parameter - wrap them into braces
+            greetWorld((name) -> "Hello, " + name);
+            
+            //You can specify lambda parameter type
+            greetWorld((String name) -> "Hello, " + name);
+        
+            //Or infer it(java 11)
+            greetWorld((var name) -> "Hello, " + name);
+            
+            //Method reference
+            greetWorld(FunctionalInterfaces::greet);
+        }
+    
+        public static void greetWorld(Greeter greeter) {
+            System.out.println(greeter.greet("World"));
+        }
+    
+        public static String greet(String name){
+            return "Hello, " + name;
+        }
+    }
+    
+ ```
+ 

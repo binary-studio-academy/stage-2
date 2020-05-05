@@ -1,0 +1,25 @@
+```java
+
+public class DefaultInterfaces implements DefaultInterface {
+    public static void main(String[] args){
+        var test = new DefaultInterfaces();
+        test.printHello();
+    }
+
+    //overriding is optional
+    @Override
+    public void printHello() {
+        System.out.println("Hello, World");
+    }
+}
+
+
+interface DefaultInterface{
+    static String name(){
+        return  "Test";
+    }
+    default void printHello(){
+        System.out.println("Hello, " + name());
+    }
+}
+```

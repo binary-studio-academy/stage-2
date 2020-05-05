@@ -1,0 +1,40 @@
+```java
+public class TryCatchResources{
+
+    public static void noResources(){
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new File("test.txt"));
+            while (scanner.hasNext()) {
+                System.out.println(scanner.nextLine());
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            if (scanner != null) {
+                scanner.close();
+            }
+        }
+    }
+    
+
+    public static void withResources(){
+        try (Scanner scanner = new Scanner(new File("test.txt"))) {
+            while (scanner.hasNext()) {
+                System.out.println(scanner.nextLine());
+            }
+        } catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
+        }
+    }
+}
+
+//Implementing your own resource
+public class MyResource implements AutoCloseable {
+    @Override
+    public void close() throws Exception {
+        System.out.println("Closed MyResource");
+    }
+}
+
+```
