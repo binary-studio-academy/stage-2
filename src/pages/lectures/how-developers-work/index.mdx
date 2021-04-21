@@ -200,7 +200,7 @@ import {
 1. Well, [**this is Git**](https://xkcd.com/1597/), [**you'll need it**](/assets/images/y-u-no-git.png).
    <div><strong>GitHub</strong> <sup><strong><a href="https://github.com/about/facts" title="GitHub Facts">[1]</a><a href="https://github.com/about/milestones" title="GitHub Milestones">[2]</a><a href="https://github.com/features" title="How developers work">[3]</a><a href="https://github.blog" title="The GitHub Blog">[4]</a><a href="https://education.github.com" title="GitHub Education">[5]</a><a href="https://help.github.com" title="GitHub Help">[6]</a><a href="https://lab.github.com" title="GitHub Learning Lab">[7]</a></strong></sup> will host it for you. First things first, skim through <a href="https://guides.github.com/introduction/flow/"><strong>Understanding the GitHub flow</strong></a> and <a href="https://guides.github.com/activities/hello-world/"><strong>Hello World</strong></a> guides to get an overview of terminology and core concepts <sup><strong><a href="https://git-scm.com/docs/gitglossary" title="gitglossary">[1]</a></strong></sup></div>
 2. Open up [**GitHub**](https://github.com/) and sign in. Create a new repository named **"homepage"** (e.g. **volodymyr-kushnir/homepage**), set description to "My very own personal website. Basically this is just a résumé.", initialize with **README**, ignore **.gitignore**, but choose **"MIT License"**
-3. Add topics _"personal website homepage resume gh-pages html css binary-studio-academy bsa20"_
+3. Add topics _"personal website homepage resume gh-pages html css binary-studio-academy bsa21"_
   <FacebookMessage small subtle>
     Hmmm, adding proper topics helps to SEO your repository...
   </FacebookMessage>
@@ -221,13 +221,34 @@ import {
       Psst, don't forget to add this as a task to <strong>Homepage</strong> project, bruv. Oh, also convert it to an issue while you're at it
    </div>
 
-6. Create a new branch `develop` based on `master`
+6. Create a new branch `develop` based on `main`
+   <div className="grading-hometask">
+    <Accordion>
+      <Accordion.Header>
+        <FontAwesomeIcon icon={faQuestionCircle} />
+        <span className="title"><strong>master чи main</strong></span>
+        <span className="icon">
+          <FontAwesomeIcon icon={faChevronRight} fixedWidth />
+        </span>
+      </Accordion.Header>
+      <Accordion.Body>
+        <div className="container">
+          <div className="columns">
+            <div className="column">
+              З 1 жовтня 2020 року, Github <a href="https://github.com/github/renaming">перейменував гілку master в main</a>. У своїй домашній роботі, будь ласка, використовуйте main.
+            </div>
+          </div>
+        </div>
+      </Accordion.Body>
+    </Accordion>
+   </div>
    <div class="bubble small subtle">
       Hey, c'mon fam, are you even trying?! I've asked you to put tasks into projects, so puh-leeeeeze!
    </div>
 
+
 7. Go to **Settings — Manage access** and invite a collaborator
-8. Go to **Settings — Branches** and set default branch to `develop`, lock `master` away
+8. Go to **Settings — Branches** and set default branch to `develop`, lock `main` away
 9. Create **index.html** using GitHub online editor and the snippet below:
    ```html
    <!DOCTYPE html>
@@ -246,7 +267,7 @@ import {
      That's right, <code>&amp;#x1F609;</code> is a <a href="http://unicode.org/emoji/charts-12.0/full-emoji-list.html#1f609"><strong>Unicode code for an emoji</strong></a>. BTW, please give your commits meaningful messages, i.e. 🤗"Updated Résumé Contacts block (fixes #23)" instead of 🤮"qwerty12%._3456". Maybe even <a href="https://help.github.com/articles/closing-issues-using-keywords/"><strong>use keywords to close issues</strong></a>!
    </div>
 
-11. Create a pull request into <code>master</code> and set title _"First release to production"_, set metadata _(reviewers, assignees, labels, projects, milestones)_, merge pull request using **Create merge commit**
+11. Create a pull request into <code>main</code> and set title _"First release to production"_, set metadata _(reviewers, assignees, labels, projects, milestones)_, merge pull request using **Create merge commit**
 12. Go to **Settings — Options** and set up **GitHub Pages**, update repository description with the proper **website** link _(you might also want to learn how to host a static website powered by Jekyll in [**Getting Started with GitHub Pages**](https://guides.github.com/features/pages/))_
 13. Now that your repository is set up, you could share the link with the customer, poke around with your repository, see what's possible, explore, follow people, [**Be social**](https://guides.github.com/activities/socialize/)
     <div class="bubble small subtle">
@@ -363,14 +384,14 @@ Let's download the repository using the command line. [**Git Handbook**](https:/
 </VideoWrapper>
 
 1. Use [**GitHub Desktop**](https://desktop.github.com/) to clone the repository on your PC
-2. Build a website using the stylesheet from [**https://volodymyrkushnir.com/**](https://volodymyrkushnir.com/) as a foundation _(see [**Résumé Wiki**](https://github.com/volodymyr-kushnir/volodymyrkushnir.com/wiki/R%C3%A9sum%C3%A9) for reference)_:
+2. Build a website using [this stylesheet](/assets/stylesheets/base.css) as a foundation _(see [**Résumé Wiki**](https://github.com/volodymyr-kushnir/volodymyrkushnir.com/wiki/R%C3%A9sum%C3%A9) for reference)_:
    1. Create a new branch named `feature/head` _(see [**GitFlow workflow**](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) for reasons why)_ and use it to update [**`<head>`**](https://github.com/volodymyr-kushnir/volodymyrkushnir.com/wiki/R%C3%A9sum%C3%A9#head):
       
       <div class="bubble small subtle">
-        Розділяючи свою роботу на багато гілок, можна швидко і вправно виправляти баги на сервері, мати окремо стабільну версію (<code>release</code>), яка готова до релізу (шляхом злиття в <code>master</code>), а також ще версію, в якій ведеться основна розробка (<code>develop</code>). А в одній єдиній гілці так не вийде. Мерджіть свої гілки pull request-ами, бо так треба. І потім, так можна частково зняти з себе відповідальність, адже той, хто approve-нув поганий код, допустив не меншу помилку, аніж той, хто його написав 😁
+        Розділяючи свою роботу на багато гілок, можна швидко і вправно виправляти баги на сервері, мати окремо стабільну версію (<code>release</code>), яка готова до релізу (шляхом злиття в <code>main</code>), а також ще версію, в якій ведеться основна розробка (<code>develop</code>). А в одній єдиній гілці так не вийде. Мерджіть свої гілки pull request-ами, бо так треба. І потім, так можна частково зняти з себе відповідальність, адже той, хто approve-нув поганий код, допустив не меншу помилку, аніж той, хто його написав 😁
       </div>
       
-      1. At the very least add `<link rel="stylesheet" href="https://volodymyrkushnir.com/assets/stylesheets/base.css">`, but you may also add other meta tags
+      1. At the very least add `<link rel="stylesheet" href="https://binary-studio-academy.github.io/stage-2/assets/stylesheets/base.css">`, but you may also add other meta tags
       2. When done ― push the branch to the remote, create a new pull request and merge into `develop`
 
          <div class="bubble small subtle">		
@@ -391,7 +412,7 @@ Let's download the repository using the command line. [**Git Handbook**](https:/
       6. Iterate further and fix bugs, add metadata, implement your own additional features and add more visual effects _(if necessary)_, maybe run [**Lighthouse**](https://developers.google.com/web/tools/lighthouse/) audits and check if the page is responsive and accessible, etc.
       7. Merge both branches into `feature/body` using pull requests
       8. Merge `feature/body` into `develop` using pull request
-   4. Open a pull request and merge `develop` into `master`. 💥**Boom, done, готово!**
+   4. Open a pull request and merge `develop` into `main`. 💥**Boom, done, готово!**
    
 <div className="grading-hometask">
   <Accordion>
@@ -552,9 +573,13 @@ Let's download the repository using the command line. [**Git Handbook**](https:/
           pointHoverRadius: 0
         }]}
       />
+      <div className="column">
+        Ми дуже цінуємо вашу оригінальність, ініціативу та гумор, тому по останньому критерію будь-яку цікаву ідею буде високо оцінено! За простий копіпаст стилів та біографії Трампа або Рю оцінка по UI/UX та Awesomeness буде середня - 5.
+      </div>
     </Accordion.Body>
   </Accordion>
 </div>
+
 <div class="bubble small subtle">
   Не хвилюйся 😌, якщо твій репозиторій не отримав 10 — самотужки за короткий проміжок часу репозиторії на 10 не складаються 😝. Хтось вкладе весь свій час і сили в сам проект, але не встигне оформити репозиторій, а хтось зробить навпаки. В першу чергу варто робити те, що подобається, і отримати максимум задоволення від процесу. Якщо при цьому всьому ще й зайти в незнайому чи некомфортну для cебе область і досягти успіхів там — то це взагалі супер! В кінці кінців, ми більше зацікавлені в тому, щоби побачити, що розробники можуть створити в короткий строк, аніж нав'язувати наше бачення правильного чи неправильного способу виконання абстрактних завдань
 </div>
@@ -636,7 +661,7 @@ Let's download the repository using the command line. [**Git Handbook**](https:/
            region: eu-central-1
            acl: public_read
            on:
-             branch: master
+             branch: main
        ```
 5. Add your first integration by subscribing to [**Zeit Now**](https://zeit.co/now)
    1. Execute `sudo npm install --global --unsafe-perm now`
