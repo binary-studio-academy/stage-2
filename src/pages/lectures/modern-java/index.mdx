@@ -4,7 +4,8 @@ import {
   TimelineOfContents,
   Level,
   ThatsAllFolks,
-  VideoWrapper
+  VideoWrapper,
+  Language,
 } from "../../../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -27,6 +28,11 @@ import "./styles.css";
     <strong>Modern java</strong>
   </h1>
 </div>
+
+<Language
+  currentLanguage="ru"
+  languages={{"ru": "lectures/modern-java", "ua": "lectures/modern-java/ua"}
+}/>
 
 <VideoWrapper duration="1 час 24 мин.">
   <iframe
