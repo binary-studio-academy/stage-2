@@ -1,0 +1,447 @@
+import {
+  Lecture,
+  SlackMessage,
+  TimelineOfContents,
+  Level,
+  ThatsAllFolks,
+  VideoWrapper
+} from "../../../../components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGithub,
+  faTelegram
+} from "@fortawesome/free-brands-svg-icons";
+import JavaOOSnippet from '../snippets/java-oo.mdx';
+import JavaFISnippet from '../snippets/java-functional-interface.mdx';
+import JavaStreamSnippet from '../snippets/java-stream-api.mdx';
+import JavaOptionalSnippet from '../snippets/java-optional.mdx';
+import JavaPSDIMSnippet from '../snippets/java-psdim.mdx';
+import JavaModuleSnippet from '../snippets/java-module-system.mdx';
+import JavaTrycatchSnippet from '../snippets/java-try-catch.mdx';
+import JavaHTTPClientSnippet from '../snippets/java-http'
+import { kyryloLesohorskyi2020Avatar } from "../../../../assets/images/avatars/intro-rounded";
+import "../styles.css";
+
+<div>
+  <h1>
+    <strong>Modern java</strong>
+  </h1>
+</div>
+
+<VideoWrapper duration="1 час 24 хв.">
+  <iframe
+    src="https://www.youtube.com/embed/U5kfvTeg2sU"
+    frameBorder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  />
+</VideoWrapper>
+
+<div>
+     <div class="author">
+        <div class="avatar-wrapper">
+        <object class="avatar-object" data={kyryloLesohorskyi2020Avatar} role="img" aria-label="My profile picture"></object>
+        </div>
+        <div class="profile">
+        <h3 class="name">Лесогорський Кирило</h3>
+        <ul class="contacts">
+            <li>
+            <a href="https://www.facebook.com/nempavel" rel="author" class="facebook">
+                <FontAwesomeIcon icon={faTelegram} className="icon" />
+                <span>@klesogor</span>
+            </a>
+            </li>
+            <li>
+            <a href="https://github.com/klesogor" rel="author" class="github">
+                <FontAwesomeIcon icon={faGithub} className="icon" />
+                <span>klesogor</span>
+            </a>
+            </li>
+        </ul>
+        <p class="about">
+        Кирило працює FullStack розробником в <a href="https://binary-studio.com"><strong>Binary Studio</strong></a> після того, як закінчив Академію по PHP в 2018 році. В роботі використовує JavaScript і TypeScript, але вважає, що мова - лише інструмент в руках програміста, та у вільний час пробує нові мови та парадигми, такі як Scala, Haskell, F#, Go, Rust і <i>Java</i>. Любить функціональне програмування та комп'ютерні ігри
+        </p>
+        </div>
+  </div>
+
+  <div class="bubble" style="margin: -0.5em 1em 1em;">
+    <strong>Привіт, академісти! 👋</strong><br />
+    Зустрічайте першу профільну лекцію по Java «Modern Java»! Розглянемо, що нового в Java 8-11 та що готовить майбутнє. Але спочатку дисклеймер:
+    <ol class="compact inverted">
+      <li>скоріш за все, ви це знаєте, і це добре😊;</li>
+      <li>лекція обіцяє бути інформативною <em>(за використання слів-паразитів і термінів - вибачте)</em>;</li>
+      <li>практичка частина лекції доволі велика, якщо ви впевнені в своїх силах, можете її пропустити.</li>
+      <li>Як бачите, я вельми формальний зануда, але воно само так виходить😢</li>
+    </ol>
+    І не забудьте взяти з собою потрібний інструментарій: <a href="https://git-scm.com/"><strong>Git</strong></a>, <a href="https://www.jetbrains.com/ru-ru/idea/"><strong>Intellij IDEA або інша IDE на вибір</strong></a>, <a href="https://www.oracle.com/java/technologies/javase-downloads.html"><strong>JDK (куди ж без неї)</strong></a>. Поїхали?
+  </div>
+</div>
+
+<div id="table-of-contents" class="table-of-contents" style="margin-top: 1em;">
+  <TimelineOfContents
+    timeline={[
+      {
+        linkTo: "#welcome-to-java",
+        title: "Welcome to Java world"
+      },
+      {
+        linkTo: "#whats-new-in-java",
+        title: "What's new in Java 8-11"
+      },
+      {
+        linkTo: "#java-ecosystem",
+        title: "Java ecosystem"
+      },
+      {
+        linkTo: "#typical-java-development-environment",
+        title: "Typical Java development environment"
+      }
+    ]}
+  />
+</div>
+
+<Level
+  id="welcome-to-java"
+  number="1"
+  name="Welcome to Java world"
+  difficulty="Beginner"
+  objectives="Що таке Java і як її варити"
+/>
+
+_Java_ - це мова програмування загального призначення, заснована на класах, об’єктно-орієнтована та розроблена так, щоб мати як можна менше залежностей реалізації. Вона розроблена з урахуванням парадигми **W**rite **O**nce - **R**un **A**nywhere(WORA), що означає, що скомпільований код Java може працювати на усіх платформах, які підтримують Java, без необхідності перекомпіляції. Java-застосунки зазвичай компілюються в байт-код, який може працювати на будь-якій віртуальній машині Java(JVM), незалежно від архітектури комп’ютера.
+
+<div class="bubble small subtle">
+  Ява? Це коли замість «Кобол завдає удар у відповідь» пишуть «удар.нанестиВідповідь
+  (новий Кобол ())» — ось це Ява.
+</div>
+
+<hr class="small" />
+
+<ul>
+  <li class="details">
+    <input type="checkbox" id="accordion-1-1" />
+    <label class="summary" for="accordion-1-1">
+      <strong>Java - високорівнева мова</strong>
+    </label>
+  <div class="details-body">
+Окрім того, що Java більше похожа на людську мову, ніж інші машинні коди, Java також бере на себе керування пам'яттю, що значно спрощує розробку та зменшує кількість багів.
+
+```java
+// C/C++ language allocate memory
+int *testArray = malloc(5 * sizeof(int));
+free(testArray);
+
+// allocate memory
+ArrayList list = new ArrayList();
+list.add('Hi!');
+
+// cleanup memory by garbage collector
+```
+
+Пам'ять керується автоматично.
+
+  </div>
+
+  </li>
+  <li class="details">
+    <input type="checkbox" id="accordion-1-2" />
+    <label class="summary" for="accordion-1-2">
+      <strong>Java - об'єктно-орієнтована мова</strong>
+    </label>
+  <div class="details-body">
+в Java есть:
+
+- класи
+- інтерфейси
+- абстрактні класи
+- пакети
+- успадкування 
+
+<JavaOOSnippet />
+    </div>
+  </li>
+  <li class="details">
+    <input type="checkbox" id="accordion-1-3" />
+    <label class="summary" for="accordion-1-3">
+      <strong>Java - в якійсь-то мірі функціональна мова</strong>
+    </label>
+  <div class="details-body">
+    <ul>
+        <li> Функції вищого порядку за допомогою функціональних інтерфейсів </li>
+        <li> Декілька абстракцій зі світу функціонального програмування, таких як Optional </li>
+    </ul>
+  </div>
+  </li>
+</ul>
+
+<Level id="whats-new-in-java" number="2" name="What's new in Java 8-11" difficulty="Intermediate" objectives="В Java 8+ було додано багато нових фіч. Вони дуже сильно вплинули на те, як ми пишемо наші програми. Їх знання та застосування на практиці важні для сучасного розробника" />
+
+<ul>
+<li class="details">
+  <input type="checkbox" id="accordion-2-1" hidden />
+  <label class="summary" for="accordion-2-1">
+    Functional Interfaces
+  </label>
+  <div class="details-body">
+      <JavaFISnippet />
+  </div>
+</li>
+
+<li class="details">
+  <input type="checkbox" id="accordion-2-2" hidden />
+  <label class="summary" for="accordion-2-2">
+    Stream API
+  </label>
+  <div class="details-body">
+      <JavaStreamSnippet />
+
+Часто використовувані операції стрімів:  
+  - Intermediate
+    - sorted
+    - filter
+    - map
+  - Terminal
+    - collect
+    - reduce
+    - forEach
+    - findAny
+    - findFirst
+
+
+  </div>
+</li>
+<li class="details">
+  <input type="checkbox" id="accordion-2-3" hidden />
+  <label class="summary" for="accordion-2-3">
+    Optional
+  </label>
+  <div class="details-body">
+      <i>Ah, almost monads</i>
+      <JavaOptionalSnippet />
+  </div>
+</li>
+
+<li class="details">
+  <input type="checkbox" id="accordion-2-4" hidden />
+  <label class="summary" for="accordion-2-4">
+    Static, default and private interface methods
+  </label>
+  <div class="details-body">
+      <JavaPSDIMSnippet />
+  </div>
+</li>
+
+<li class="details">
+  <input type="checkbox" id="accordion-2-5" hidden />
+  <label class="summary" for="accordion-2-5">
+    Module system
+  </label>
+  <div class="details-body">
+      <JavaModuleSnippet />
+  </div>
+</li>
+
+<li class="details">
+  <input type="checkbox" id="accordion-2-6" hidden />
+  <label class="summary" for="accordion-2-6">
+    Try-catch with resources
+  </label>
+  <div class="details-body">
+      <JavaTrycatchSnippet />
+  </div>
+</li>
+
+<li class="details">
+  <input type="checkbox" id="accordion-2-7" hidden />
+  <label class="summary" for="accordion-2-7">
+    JSHell CLI REPL
+  </label>
+  <div class="details-body">
+      Введіть в терміналі `jshell` та експериментуйте
+  </div>
+</li>
+
+<li class="details">
+  <input type="checkbox" id="accordion-2-8" hidden />
+  <label class="summary" for="accordion-2-8">
+    HTTP Client
+  </label>
+  <div class="details-body">
+      <JavaHTTPClientSnippet />
+  </div>
+</li>
+
+<li class="details">
+  <input type="checkbox" id="accordion-2-9" hidden />
+  <label class="summary" for="accordion-2-9">
+    Other changes
+  </label>
+  <div class="details-body">
+- GC interface 
+- Nest Based Access Control 
+- Immutable collections 
+- String methods 
+- Run java files from command line with `java` 
+- No-Op GC 
+- CompletableFuture 
+- Variable handles 
+  </div>
+</li>
+
+</ul>
+
+<Level id="java-ecosystem" number="3" name="Java ecosystem" difficulty="Hard" objectives="Вивчити екосистему й управління пакетами" />
+
+### Види кави, або що можна створювати на Java
+
+<div class="columns">
+  <div class="column col-4">
+    <div class="panel">
+      <div class="panel-header">
+        <a href="https://spring.io/"><strong>Web застосунки</strong></a>
+      </div>
+      <div class="panel-body">
+        API, MVC, Map-Reduce та багато іншого. Величезний вибір бібліотек та фреймворків
+      </div>
+    </div>
+  </div>
+  <div class="column col-4">
+    <div class="panel">
+      <div class="panel-header">
+        <a href="#"><strong>Крос-платформений Desktop</strong></a>
+      </div>
+      <div class="panel-body">
+        Багатоплатформовий десктоп не дуже затребуваний, однак для застосунків, які потребують доступ до операційної системи або дуже вимогливі до ресурсів, таких як IDE, Java - відмінний вибір 
+      </div>
+    </div>
+  </div>
+  <div class="column col-4">
+    <div class="panel">
+      <div class="panel-header">
+        <a href="#"><strong>Нативна Android розробка</strong></a>
+      </div>
+      <div class="panel-body">
+        Нативна розробка застосунків під андроїд. Останнім часом витісняється Kotlin.
+      </div>
+    </div>
+  </div>
+</div>
+
+### Стиль написання коду  
+
+Стиль написання коду – це набір принципів для конкретної мови програмування, які рекомендують стиль та методи програмування для кожного аспекту програми, написаної на цій мова. Ці угоди зазвичай охоплюють організацію файлів, відступи, коментарі, оголошення, оператори, пробіли, згоди стосовно імен, методи програмування, принципи програмування, практичні правила програмування, передові методи архітектури і т.д. Це керівні вказівки стосовно якості структури програмного забезпечення. Програмістах наполегливо рекомендується дотримуватися цих рекомендацій, для того, щоб поліпшити читабельність вихідного коду та полегшити підтримку програмного забезпечення.
+
+В Java немає єдиного стилю написання коду, замість цього – кожен проект обирає стиль під власні потреби. Однак, існує три популярних стиля:
+
+- Google style guide
+- Oracle code conventions
+- Spring code style
+
+### Фреймворки та бібліотеки
+
+`Фре́ймворк — програмна платформа, що визначаюча структура програмної системи; програмне забезпечення, що полегшує розробку та об’єднання різних компонентів великого програмного проекту.` - Wikipedia
+
+<img src="https://pbs.twimg.com/media/DvIFxwfXcAAEyWL.jpg" />
+
+Фреймворки надають необхідну інфраструктуру для проекту, тим самим зменшуючи кількість бойлерплейту та збільшуючи швидкість розробки.
+Від бібліотеки фреймворк відрізняється використанням принципу інверсії управління - прикладний код, написаний програмістами, викликається із коду фреймворку, що дозволяє абстрагуватися від багатьох низькорівневих операцій.
+
+
+Приклади Java фреймворків і бібліотек:  
+- Web
+  - Spring
+  - Play
+  - Vert.x
+- ORMs
+    - Hibernate
+    - EclipseLink
+    - OpenJPA
+ - Misc
+    - RX Java
+    - Apache Hadoop
+    - Apache Lucene 
+
+### Статичні аналізатори (aka лінтери)
+Статичний аналізатор – інструмент, який слідкує за коректністю програми, не запускаючи її. Інструменти для статичного аналізу можуть знаходити розповсюджені помилки та антипатерни, які компілятор пропустив. Також, вони можуть слідкувати за відповідністю стилю написання коду, тим самим спрощуючи  життя програмістам.
+
+В **Java** для статичного аналізу використовуються такі інструменти:
+
+- PMD
+- Cobertura
+- FindBugs
+- Jacoco 
+
+### Профайлери
+Ghjafqkths - це інструмент, який відслідковує конструкції та операції Java-байткоду на рівні JVM. Ці конструкції й операції включають створення об’єктів, ітеративне виконання (включаючи рекурсивні виклики), виконання методів, виконання потоків та зборку мусору. 
+Приклади профіліровщиків:
+- JProfiler
+- YourKit
+- VisualVM
+
+### JVM Languages
+Java - не єдина JVM мова. Існують й інші мови, які можна компілювати в Java-байткод. Такі мови зазвичай сумісні з існуючим Java-кодом.
+
+Приклади таких мов: 
+ - Scala
+ - Kotlin
+ - Clojure
+ - Groovy
+
+### Package management
+ 
+Пакетні менеджери дозволяють перевикористовувати існуючий код та бібліотеки з легкістю. "Зовнішній" по відношенню до проекту код називається `залежністю`. 
+В світі Java активно використовують два пакетних менеджера: **Gradle** і **Maven**
+ 
+ 
+| Gradle                                       | Maven                                                  |
+| -------------------------------------------- |:------------------------------------------------------:|	
+| Gradle Build time is short and fast.         | Maven performance is slow as compared to Gradle.       | 
+| Gradle Scripts are shorter and cleaner.      | Maven scripts are a bit lengthy as compared to Gradle. | 
+| DSL based                                    | XML-based                                              |
+| Supports incremental compilation             | Does not supports incremental compilation              |
+
+#### Приклади gradle команд
+
+| Команда                                     | Опис                                             |
+| -------------------------------------------- |:------------------------------------------------------:|	
+| gradle build                                 | збірка проекту, запуск `assemble` и `check` задач      | 
+| gradle clean build                           | збірка проекту з нуля, без використання кешу          | 
+| gradle test                                  | запуск тестів                                          |
+
+<Level id="typical-java-development-environment" number="4" name="Typical java development envicronment" difficulty="Easy" objectives="Дізнатись, що необхідно для розробки на Java окрім JDK" />
+
+- IDE - Intellij IDEA / Eclipse / NetBeansIDE / VS Code / Text Editor
+- Operating System - Linux / Windows / Mac
+- VM/Container - Vagrant / Docker
+- VCS - Git / SVN / Mercurial
+
+## Useful links
+
+* [Useful java links repository](https://github.com/Vedenin/useful-java-links)
+* [Useful java articles and guides](https://www.baeldung.com/)  
+* [List of popular java libraries](https://github.com/akullpp/awesome-java)
+
+## Additional materials
+
+* [Clean code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM)
+* [GOF Design Patterns](https://www.amazon.com/Design-Patterns-Object-Oriented-Addison-Wesley-Professional-ebook/dp/B000SEIBB8)
+* [SICP](https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871)
+* [Effective Java](https://www.amazon.de/dp/0134685997?tag=hackr03c-21)
+
+<ThatsAllFolks />		
+<div class="bubble">		
+  А на сьогодні все! Свої запитання та відгуки залишайте на сайті <a href="https://academy.binary-studio.com/"><strong>Binary Studio Academy</strong></a>. Бажаю вам успіхів, не втрачайте мотивації та вчиться з задоволенням. Дякую за увагу!		
+</div>
+
+
+export const metadata = {
+  orderId: 7,
+  author: "Кирило Лесогорський",
+  title: "Modern Java",
+  description: "В цій лекції розглянемо базову інформацію, екосистему та фічі <strong>Java</strong>. Після цього Кирило розповість про структуру gradle проекту та створить невеликий веб-застосунок з використанням веб-серверу Undertow",
+  keywords: ["Java", "JVM", "Modern Java", "Undertow"],
+  duration: "1 час 25 хв.",
+  publishedAt: "2019-05-19T15:00:00"
+}
+
+export default Lecture;
