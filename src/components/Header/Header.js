@@ -6,7 +6,7 @@ const Header = () => (
   <header className="hero hero-sm">
     <nav className="navbar">
       <div className="navbar-section">
-		<strong>Binary Studio Academy 2020</strong>		
+		<strong>Binary Studio Academy 2021</strong>		
       </div>
       <div className="navbar-section">
       </div>
