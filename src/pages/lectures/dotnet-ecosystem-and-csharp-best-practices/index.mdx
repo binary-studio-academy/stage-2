@@ -147,7 +147,7 @@ import "./styles.css";
 </div>
 <Level id="dotnet-platform-overview" number="1" name="Огляд .NET платформи" difficulty={<span><a href="https://www.urbandictionary.com/define.php?term=easy%20peasy%20lemon%20squeezy">Easy peasy lemon squeezy</a>.</span>} objectives={<span>Почитати/послухати про платформу .NET в загальному <em>(довго не буде)</em>.</span>} labels={{ level: "Розділ", backToTop: "нагору", difficulty: "Складність:", objectives: "Мета:" }} />
 
-<p style="margin-left: 0.25em;">Зараз компанія Microsoft вкладає досить багато ресурсів у розвиток .NET та їхньої хмарної платформи — Azure <em>(Ажур, Ежур, Ейжа)</em> та найбільше котрибьютить в open source. 
+<p style="margin-left: 0.25em;">Зараз компанія Microsoft вкладає досить багато ресурсів у розвиток .NET та їхньої хмарної платформи — Azure <em>(Ажур, Ежур, Ейжа)</em> та найбільше контрибьютить в open source. 
 Інфраструктура .NET стрімко росте та розвивається, постійно створюютсья нові інструменти для роботи з нею, додаються інтеграції з іншими сервісами.
 </p>
 <ul>
@@ -241,14 +241,13 @@ import "./styles.css";
     </label>
     <div class="details-body details-body-with-image" style="margin-bottom: 0.5em;">
       <img src={dotnet5Platform} alt="dotnet5-platform" class="top-image"/>
-      <p>Після релізу <strong>.NET Core 3.0</strong> в цьому році компанія Microsoft випустить платформу <strong>.NET 5</strong>, яка стане серйозним поліпшенням системи розробки в цілому.
-         Головним нововведенням, в порівнянні з <strong>.NET Framework 4.8</strong>, буде забезпечення підтримки <strong>Linux</strong>, <strong>macOS</strong>, <strong>iOS</strong>, <strong>Android</strong>, <strong>tvOS</strong>, <strong>watchOS</strong> і <strong>WebAssembly</strong>. 
-         При цьому версія Framework 4.8 залишиться останньою, далі розвиватися буде тільки сімейство Core.
-         Розробка зосередиться навколо <strong>Runtime</strong>, <strong>JIT-компілятора</strong>, <strong>AOT</strong>, <strong>GC</strong>, <strong>BCL</strong> (<em>Base Class Library</em>), <strong>C#</strong>, <strong>F#</strong>, <strong>VB.NET</strong>, <strong>ASP.NET</strong>, <strong>Entity Framework</strong>, <strong>ML.NET</strong>, <strong>WinForms</strong>, <strong>WPF</strong> і <strong>Xamarin</strong>. 
-         Це дозволить уніфікувати платформу і запропонувати єдиний відкритий фреймворк і <em>runtime</em> для різних завдань. В результаті можна буде створювати додатки для різних платформ на загальній кодової базі з однаковим процесом збiрки незалежно від типу програми.
-         І розробляти можна буде за допомогою <strong>Visual Studio</strong>, <strong>Visual Studio for Mac</strong>, <strong>Visual Studio Сode</strong> ― на чому завгодно, також нам обіцяють, що уніфікують <strong>CLI</strong> і можна багато чого бутстрапити за допомогою консолі.
+      <p>У листопаді 2020 року компанія Microsoft випустила платформу <strong>.NET 5</strong>, яка стала серьйозним поліпшенням системи розробки в цілому.
+         Головним нововведенням, в порівнянні з <strong>.NET Framework 4.8</strong>, стало забезпечення підтримки <strong>Linux</strong>, <strong>macOS</strong>, <strong>iOS</strong>, <strong>Android</strong>, <strong>tvOS</strong>, <strong>watchOS</strong> і <strong>WebAssembly</strong>. 
+         При цьому версія Framework 4.8 залишиться останньою, далі розвиватися буде тільки сімейство .NET <em>x</em>. 
+         Це дозволило уніфікувати платформу і запропонувало єдиний відкритий фреймворк і <em>runtime</em> для різних завдань. В результаті можна створювати додатки для різних платформ на загальній кодової базі з однаковим процесом збiрки незалежно від типу програми.
+         І розробляти можна за допомогою <strong>Visual Studio</strong>, <strong>Visual Studio for Mac</strong>, <strong>Visual Studio Сode</strong> ― на чому завгодно.
       </p>
-      <p>Реліз .NET 5 запланований на листопад 2020 року.</p>
+      <p>А вже на листопад 2021 года запланований реліз <strong>.NET 6.</strong></p>
     </div>
   </li>
   <li class="details">
@@ -456,7 +455,7 @@ import "./styles.css";
       Розглянемо кілька ключових відмінностей між ними:</p>
       <ol>
         <li>
-          <em>Інтерфейс</em> не може мати модифікаторів доступу до членів — все що є в <em>інтерфейсі</em> по дефолтну є публічним. У абстрактного класу все залишається як і у звичайного класу.
+          <em>Інтерфейс</em> не може мати модифікаторів доступу до членів — все що є в <em>інтерфейсі</em> по дефолту є публічним. У абстрактного класу все залишається як і у звичайного класу.
           <div class="columns">
             <div class="column col-6">
               <SnippetL03S03 />
@@ -896,7 +895,7 @@ import "./styles.css";
   <li class="details">
     <input type="checkbox" id="accordion-4-1" />
     <label class="summary" for="accordion-4-1">
-      <h5><strong>Coding Standards and <code>NamingConventions</code></strong></h5>
+      <h5><strong>Coding Standards and <code>Naming Conventions</code></strong></h5>
     </label>
     <div class="details-body" style="margin-bottom: 0.5em;">
       <p>В перекладі на людську мову — загальноприйняті стандарти написання коду та узгоджені правила, як називати змінні, функції і інше. Це — граматика і орфографія C#, прийнята більшістю .NET-розробників для того, щоб інші девелопери <em>(ви через Х часу)</em> могли легко та швидко зрозуміти, що відбувається у вашому коді та використовувати його, не плутаючись у всіх можливих способах назвати, скажімо, аргумент <em>(і такі правила написання є абсолютно у всіх мовах програмування, не тільки в С#)</em>. Довго розповідати про кожне з правил нема сенсу, головне для вас — самостійно ознайомитися з <a href="https://www.dofactory.com/reference/csharp-coding-standards">списком більшості поширених стандартів C#</a>.</p>
