@@ -1,4 +1,4 @@
-import { Lecture, SlackMessage, TimelineOfContents, Level, ThatsAllFolks, VideoWrapper } from "../../../components";
+import { Lecture, SlackMessage, TimelineOfContents, Level, ThatsAllFolks, VideoWrapper, Language } from "../../../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookSquare, faGithub, faLinkedin, faSkype } from "@fortawesome/free-brands-svg-icons";
 import { rostyslavDiakiv2018Avatar } from "../../../assets/images/avatars/intro-rounded";
@@ -70,6 +70,11 @@ import SnippetL04S12 from "./assets/snippets/snippet-l04-s12.mdx";
 import "./styles.css";
 
 <div><h1><strong>.NET ecosystem and C# best practices</strong></h1></div>
+
+<Language
+  currentLanguage="ua"
+  languages={{"ua": "lectures/dotnet-ecosystem-and-csharp-best-practices", "ru": "lectures/dotnet-ecosystem-and-csharp-best-practices/ru"}
+}/>
 
 <VideoWrapper duration="1 год 8 хв">
   <iframe src="https://www.youtube.com/embed/iAAD8TiARn4" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
