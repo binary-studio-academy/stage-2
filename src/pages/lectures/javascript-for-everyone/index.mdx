@@ -40,6 +40,7 @@ import SnippetL01S21 from "./assets/snippets/snippet-l01-s21.mdx";
 import SnippetL01S22 from "./assets/snippets/snippet-l01-s22.mdx";	
 import SnippetL01S23 from "./assets/snippets/snippet-l01-s23.mdx";	
 import SnippetL01S24 from "./assets/snippets/snippet-l01-s24.mdx";	
+import SnippetL01S25 from "./assets/snippets/snippet-l01-s25.mdx";	
 import SnippetL02S01 from "./assets/snippets/snippet-l02-s01.mdx";	
 import SnippetL02S02 from "./assets/snippets/snippet-l02-s02.mdx";	
 import SnippetL02S03 from "./assets/snippets/snippet-l02-s03.mdx";	
@@ -98,7 +99,7 @@ import SnippetL03S14 from "./assets/snippets/snippet-l03-s14.mdx";
 import SnippetL03S15 from "./assets/snippets/snippet-l03-s15.mdx";	
 import SnippetL03S16 from "./assets/snippets/snippet-l03-s16.mdx";
 
-<div><h1><strong>ES6 for everyone</strong></h1></div>
+<div><h1><strong>JavaScript for everyone</strong></h1></div>
 
 <VideoWrapper duration="50 сек">
   <iframe src="https://www.youtube.com/embed/YUgKHOaal8k" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
@@ -138,7 +139,7 @@ import SnippetL03S16 from "./assets/snippets/snippet-l03-s16.mdx";
   </div>
   <div class="bubble" style="margin: -0.5em 1em 1em;">
     <strong>Hello, world! 👋</strong><br />
-    Розповім про всі радості ES6, починаючи від базового JavaScript і закінчуючи <em>(обережно, жаргон!)</em> модулями, бандлерами і транспайлерами. Перед тим як розпочати  — декілька дісклеймерів про зміст лекції:<br />
+    Розповім про всі радості сучасного JavaScript, починаючи від базового синтаксису і закінчуючи <em>(обережно, жаргон!)</em> модулями, бандлерами і транспайлерами. Перед тим як розпочати  — декілька дісклеймерів про зміст лекції:<br />
     <ol class="compact inverted">
       <li>деякі терміни та технології розглядаються поверхнево;</li>
       <li>"— А клікати на всі лінки на документацію і читати всі-всі статті?" Ну-у-у-у-у, up to you;</li>
@@ -237,7 +238,7 @@ import SnippetL03S16 from "./assets/snippets/snippet-l03-s16.mdx";
     { name: "Nikita Semenistyi", avatarUrl: nikitaSemenistyiAvatar }
   ]}
 >
-  <strong>Yeah, sure, I'm on it, let's go!</strong> I'm gonna target modern browsers and will start with the plain JavaScript using new ES6 features where necessary. Sometime in the future, when the project evolves, we'll use libraries like React or Vue.js, but for now, vanilla JavaScript will do the job just fine.
+  <strong>Yeah, sure, I'm on it, let's go!</strong> I'm gonna target modern browsers and will start with the plain JavaScript using new features where necessary. Sometime in the future, when the project evolves, we'll use libraries like React or Vue.js, but for now, vanilla JavaScript will do the job just fine.
 </SlackMessage>
 
 <div id="table-of-contents" class="table-of-contents" style="margin-top: 1.5em;">
@@ -245,8 +246,8 @@ import SnippetL03S16 from "./assets/snippets/snippet-l03-s16.mdx";
     linkTo: "#basic-javascript",
     title: "Basic JavaScript"
   }, {
-    linkTo: "#building-a-webpage-with-es6",
-    title: "Building a webpage with ES6"
+    linkTo: "#building-a-webpage-with-javascript",
+    title: "Building a webpage with JavaScript"
   }, {
     linkTo: "#modules-transpiling-bundling-etc",
     title: "Modules, transpiling, bundling, etc."
@@ -344,6 +345,18 @@ import SnippetL03S16 from "./assets/snippets/snippet-l03-s16.mdx";
 The number type has three symbolic values: `+Infinity`, `-Infinity`, and `NaN` (not-a-number).
 
 <SnippetL01S09 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-types-bigint" />
+        <label class="summary" for="accordion-types-bigint">
+          <strong>BigInt</strong> (added in ES2020)
+        </label>
+  <div class="details-body">
+    <p>The BigInt type represent integers with arbitrary precision.</p>
+
+<SnippetL01S25 />
 
   </div>
       </li>
@@ -512,7 +525,7 @@ Converting to **boolean**
   </li>
 </ol>
 
-<Level id="building-a-webpage-with-es6" number="2" name="Building a webpage with ES6" difficulty="Let's spice it up 🔥." objectives="Gain practical knowledge." />
+<Level id="building-a-webpage-with-javascript" number="2" name="Building a webpage with JavaScript" difficulty="Let's spice it up 🔥." objectives="Gain practical knowledge." />
 
 <VideoWrapper duration="39 хв 42 сек">
   <iframe src="https://www.youtube.com/embed/P_SyGfORElk" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
@@ -1211,8 +1224,8 @@ As usual, just `npm install css-loader style-loader --save-dev` and edit <strong
 export const metadata = {
   orderId: 2,
   author: "Роман Саган",
-  title: "ES6 for everyone",
-  description: "Роман швиденько розказує про основні поняття <strong>JavaScript</strong>, потім пише фронтенд для простої інтерактивної веб-сторінки, використовуючи <strong>DOM API</strong> для створення елементів та найбільш популярні функції <strong>ES6</strong> для обробки даних, а також пояснює про модулі, транспайлери, бандлери.",
+  title: "JavaScript for everyone",
+  description: "Роман швиденько розказує про основні поняття <strong>JavaScript</strong>, потім пише фронтенд для простої інтерактивної веб-сторінки, використовуючи <strong>DOM API</strong> для створення елементів та найбільш популярні функції <strong>JavaScript</strong> для обробки даних, а також пояснює про модулі, транспайлери, бандлери.",
   keywords: ["hola", "guapa"],
   duration: "1 год 19 хв",
   publishedAt: "2021-05-05T00:00:00"
