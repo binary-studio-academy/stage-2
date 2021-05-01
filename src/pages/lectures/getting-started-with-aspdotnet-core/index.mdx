@@ -1,4 +1,4 @@
-import { Lecture, SlackMessage, TimelineOfContents, Level, ThatsAllFolks, VideoWrapper } from "../../../components";
+import { Lecture, SlackMessage, TimelineOfContents, Level, ThatsAllFolks, VideoWrapper, Language } from "../../../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe } from "@fortawesome/pro-solid-svg-icons";
 import { faFacebookSquare, faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -20,6 +20,11 @@ import SnippetL04S06 from "./assets/snippets/snippet-l04-s06.mdx";
 import './styles.css';
 
 <div><h1><strong>Getting started with ASP.NET Core</strong></h1></div>
+
+<Language
+  currentLanguage="ru"
+  languages={{"ua": "lectures/getting-started-with-aspdotnet-core/ua", "ru": "lectures/getting-started-with-aspdotnet-core"}
+}/>
 
 <VideoWrapper duration="28 мин 14 сек">
   <iframe src="https://www.youtube.com/embed/Fa9RPd1tL30" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
