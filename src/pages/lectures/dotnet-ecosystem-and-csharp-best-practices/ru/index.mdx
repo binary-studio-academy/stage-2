@@ -150,7 +150,7 @@ import "../styles.css";
     title: "Принципы чистого кода"
   }]} />
 </div>
-<Level id="dotnet-platform-overview" number="1" name="Обзор .NET платформы" difficulty={<span><a href="https://www.urbandictionary.com/define.php?term=easy%20peasy%20lemon%20squeezy">Easy peasy lemon squeezy</a>.</span>} objectives={<span>Почитать/послушать о платформе .NET в целом <em>(много времени не займет)</em>.</span>} labels={{ level: "Раздел", backToTop: "Наверх", difficulty: "Сложность:", objectives: "Мета:" }} />
+<Level id="dotnet-platform-overview" number="1" name="Обзор .NET платформы" difficulty={<span><a href="https://www.urbandictionary.com/define.php?term=easy%20peasy%20lemon%20squeezy">Easy peasy lemon squeezy</a>.</span>} objectives={<span>Почитать/послушать о платформе .NET в целом <em>(много времени не займет)</em>.</span>} labels={{ level: "Раздел", backToTop: "Наверх", difficulty: "Сложность:", objectives: "Цель:" }} />
 
 <p style="margin-left: 0.25em;">Сейчас компания Microsoft вкладывает достаточно много ресурсов в развитие .NET и их облачной платформы — Azure <em>(Ажур, Эйжур, Ейжа)</em> и больше всех контрибьютит в open source. 
 Инфраструктура .NET стремительно растет и развивается, постоянно создаются новые инструменты для работы с ней, добавляются интеграции с другими сервисами.
@@ -266,7 +266,7 @@ import "../styles.css";
     </div>
   </li>
 </ul>
-<Level id="dotnet-under-the-hood" number="2" name=".NET під капотом" difficulty={<span style={{ color: "orangered", fontWeight: "bold" }}>Hard as hell 🔥</span>} objectives="Понять SDK." labels={{ level: "Раздел", backToTop: "Наверх", difficulty: "Сложность:", objectives: "Мета:" }} />
+<Level id="dotnet-under-the-hood" number="2" name=".NET под капотом" difficulty={<span style={{ color: "orangered", fontWeight: "bold" }}>Hard as hell 🔥</span>} objectives="Понять SDK." labels={{ level: "Раздел", backToTop: "Наверх", difficulty: "Сложность:", objectives: "Цель:" }} />
 <ul>
   <li class="details">
     <input type="checkbox" id="accordion-2-1" />
@@ -411,7 +411,7 @@ import "../styles.css";
     </div>
   </li>
 </ul>
-<Level id="csharp-essential-topics" number="3" name="Самые вежные темы C#" difficulty="Ну так себе." objectives="Понять SDK." labels={{ level: "Раздел", backToTop: "наверх", difficulty: "Сложность:", objectives: "Мета:" }} />
+<Level id="csharp-essential-topics" number="3" name="Самые вежные темы C#" difficulty="Ну так себе." objectives="Понять SDK." labels={{ level: "Раздел", backToTop: "наверх", difficulty: "Сложность:", objectives: "Цель:" }} />
 <ul>
   <li class="details">
     <input type="checkbox" id="accordion-3-1" />
@@ -895,7 +895,7 @@ import "../styles.css";
     </div>
   </li>
 </ul>
-<Level id="clean-code-principles" number="4" name="Принципы чистого кода" difficulty="Семь раз отмерь, один раз отрежь." objectives="Понять, как писать такой код, который захочется читать." labels={{ level: "Раздел", backToTop: "Наверх", difficulty: "Сложность:", objectives: "Мета:" }} />
+<Level id="clean-code-principles" number="4" name="Принципы чистого кода" difficulty="Семь раз отмерь, один раз отрежь." objectives="Понять, как писать такой код, который захочется читать." labels={{ level: "Раздел", backToTop: "Наверх", difficulty: "Сложность:", objectives: "Цель:" }} />
 <ul>
   <li class="details">
     <input type="checkbox" id="accordion-4-1" />
@@ -1126,7 +1126,7 @@ import "../styles.css";
     </div>
   </li>
 </ul>
-<Level id="bonus" number="" name="Корисні ресурси" difficulty="" objectives="" labels={{ level: "Бонус", backToTop: "Наверх", difficulty: "", objectives: "" }} />
+<Level id="bonus" number="" name="Полезные ресурсы" difficulty="" objectives="" labels={{ level: "Бонус", backToTop: "Наверх", difficulty: "", objectives: "" }} />
 <div class="columns">
   <div class="column col-6 col-sm-12">
     <p><strong>Books</strong> 📕</p>
@@ -1157,7 +1157,8 @@ export const metadata = {
   description: "Ростик делает детальный обзор экосистемы <strong>.NET</strong>, рассказывает про особенности работы с памятью, на примерах показывает все важные понятия языка программирования <strong>С#</strong>, а заканчивает универсальной подборкой лучших практик написания чистого кода, которые актуальны для любого языка.",
   keywords: ["hola", "guapa"],
   duration: "1 год 8 мин",
-  publishedAt: "2021-05-05T00:00:00"
+  publishedAt: "2021-05-05T00:00:00",
+  hiddenFromMainPage: true,
 }
 
 export default Lecture;
