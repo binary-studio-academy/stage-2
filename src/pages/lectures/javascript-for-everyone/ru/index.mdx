@@ -1,0 +1,1240 @@
+import { Lecture, SlackMessage, TimelineOfContents, Level, Flute, ThatsAllFolks, VideoWrapper, Accordion, RadarChart, Language } from "../../../../components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestionCircle } from "@fortawesome/pro-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/pro-regular-svg-icons";
+import { faFacebookSquare, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { romanSahan2017Avatar } from "../../../../assets/images/avatars/intro-rounded";
+import {
+ ryuAvatar,
+ youAvatar,
+ alexandrTovmachAvatar,
+ andriiKarunAvatar,
+ artemManukianAvatar,
+ olegChulanovskyiAvatar,
+ oleksandrKovalovAvatar,
+ yuriyStetsulaAvatar,
+ alyonaRapovaAvatar,
+ nikitaSemenistyiAvatar
+} from "../../../../assets/images/avatars/slack-squared";
+import SnippetL01S01 from "../assets/snippets/snippet-l01-s01.mdx";	
+import SnippetL01S02 from "../assets/snippets/snippet-l01-s02.mdx";	
+import SnippetL01S03 from "../assets/snippets/snippet-l01-s03.mdx";	
+import SnippetL01S04 from "../assets/snippets/snippet-l01-s04.mdx";	
+import SnippetL01S05 from "../assets/snippets/snippet-l01-s05.mdx";	
+import SnippetL01S06 from "../assets/snippets/snippet-l01-s06.mdx";	
+import SnippetL01S07 from "../assets/snippets/snippet-l01-s07.mdx";	
+import SnippetL01S08 from "../assets/snippets/snippet-l01-s08.mdx";	
+import SnippetL01S09 from "../assets/snippets/snippet-l01-s09.mdx";	
+import SnippetL01S10 from "../assets/snippets/snippet-l01-s10.mdx";	
+import SnippetL01S11 from "../assets/snippets/snippet-l01-s11.mdx";	
+import SnippetL01S12 from "../assets/snippets/snippet-l01-s12.mdx";	
+import SnippetL01S13 from "../assets/snippets/snippet-l01-s13.mdx";	
+import SnippetL01S14 from "../assets/snippets/snippet-l01-s14.mdx";	
+import SnippetL01S15 from "../assets/snippets/snippet-l01-s15.mdx";	
+import SnippetL01S16 from "../assets/snippets/snippet-l01-s16.mdx";	
+import SnippetL01S17 from "../assets/snippets/snippet-l01-s17.mdx";	
+import SnippetL01S18 from "../assets/snippets/snippet-l01-s18.mdx";	
+import SnippetL01S19 from "../assets/snippets/snippet-l01-s19.mdx";	
+import SnippetL01S20 from "../assets/snippets/snippet-l01-s20.mdx";	
+import SnippetL01S21 from "../assets/snippets/snippet-l01-s21.mdx";	
+import SnippetL01S22 from "../assets/snippets/snippet-l01-s22.mdx";	
+import SnippetL01S23 from "../assets/snippets/snippet-l01-s23.mdx";	
+import SnippetL01S24 from "../assets/snippets/snippet-l01-s24.mdx";	
+import SnippetL01S25 from "../assets/snippets/snippet-l01-s25.mdx";	
+import SnippetL02S01 from "../assets/snippets/snippet-l02-s01.mdx";	
+import SnippetL02S02 from "../assets/snippets/snippet-l02-s02.mdx";	
+import SnippetL02S03 from "../assets/snippets/snippet-l02-s03.mdx";	
+import SnippetL02S04 from "../assets/snippets/snippet-l02-s04.mdx";	
+import SnippetL02S05 from "../assets/snippets/snippet-l02-s05.mdx";	
+import SnippetL02S06 from "../assets/snippets/snippet-l02-s06.mdx";	
+import SnippetL02S07 from "../assets/snippets/snippet-l02-s07.mdx";	
+import SnippetL02S08 from "../assets/snippets/snippet-l02-s08.mdx";	
+import SnippetL02S09 from "../assets/snippets/snippet-l02-s09.mdx";	
+import SnippetL02S10 from "../assets/snippets/snippet-l02-s10.mdx";	
+import SnippetL02S11 from "../assets/snippets/snippet-l02-s11.mdx";	
+import SnippetL02S12 from "../assets/snippets/snippet-l02-s12.mdx";	
+import SnippetL02S13 from "../assets/snippets/snippet-l02-s13.mdx";	
+import SnippetL02S14 from "../assets/snippets/snippet-l02-s14.mdx";	
+import SnippetL02S15 from "../assets/snippets/snippet-l02-s15.mdx";	
+import SnippetL02S16 from "../assets/snippets/snippet-l02-s16.mdx";	
+import SnippetL02S17 from "../assets/snippets/snippet-l02-s17.mdx";	
+import SnippetL02S18 from "../assets/snippets/snippet-l02-s18.mdx";	
+import SnippetL02S19 from "../assets/snippets/snippet-l02-s19.mdx";	
+import SnippetL02S20 from "../assets/snippets/snippet-l02-s20.mdx";	
+import SnippetL02S21 from "../assets/snippets/snippet-l02-s21.mdx";	
+import SnippetL02S22 from "../assets/snippets/snippet-l02-s22.mdx";	
+import SnippetL02S23 from "../assets/snippets/snippet-l02-s23.mdx";	
+import SnippetL02S24 from "../assets/snippets/snippet-l02-s24.mdx";	
+import SnippetL02S25 from "../assets/snippets/snippet-l02-s25.mdx";	
+import SnippetL02S26 from "../assets/snippets/snippet-l02-s26.mdx";	
+import SnippetL02S27 from "../assets/snippets/snippet-l02-s27.mdx";	
+import SnippetL02S28 from "../assets/snippets/snippet-l02-s28.mdx";	
+import SnippetL02S29 from "../assets/snippets/snippet-l02-s29.mdx";	
+import SnippetL02S30 from "../assets/snippets/snippet-l02-s30.mdx";	
+import SnippetL02S31 from "../assets/snippets/snippet-l02-s31.mdx";	
+import SnippetL02S32 from "../assets/snippets/snippet-l02-s32.mdx";	
+import SnippetL02S33 from "../assets/snippets/snippet-l02-s33.mdx";	
+import SnippetL02S34 from "../assets/snippets/snippet-l02-s34.mdx";	
+import SnippetL02S35 from "../assets/snippets/snippet-l02-s35.mdx";	
+import SnippetL02S36 from "../assets/snippets/snippet-l02-s36.mdx";	
+import SnippetL02S37 from "../assets/snippets/snippet-l02-s37.mdx";	
+import SnippetL02S38 from "../assets/snippets/snippet-l02-s38.mdx";	
+import SnippetL02S39 from "../assets/snippets/snippet-l02-s39.mdx";	
+import SnippetL02S40 from "../assets/snippets/snippet-l02-s40.mdx";	
+import SnippetL02S41 from "../assets/snippets/snippet-l02-s41.mdx";	
+import SnippetL03S01 from "../assets/snippets/snippet-l03-s01.mdx";	
+import SnippetL03S02 from "../assets/snippets/snippet-l03-s02.mdx";	
+import SnippetL03S03 from "../assets/snippets/snippet-l03-s03.mdx";	
+import SnippetL03S04 from "../assets/snippets/snippet-l03-s04.mdx";	
+import SnippetL03S05 from "../assets/snippets/snippet-l03-s05.mdx";	
+import SnippetL03S06 from "../assets/snippets/snippet-l03-s06.mdx";	
+import SnippetL03S07 from "../assets/snippets/snippet-l03-s07.mdx";	
+import SnippetL03S08 from "../assets/snippets/snippet-l03-s08.mdx";	
+import SnippetL03S09 from "../assets/snippets/snippet-l03-s09.mdx";	
+import SnippetL03S10 from "../assets/snippets/snippet-l03-s10.mdx";	
+import SnippetL03S11 from "../assets/snippets/snippet-l03-s11.mdx";	
+import SnippetL03S12 from "../assets/snippets/snippet-l03-s12.mdx";	
+import SnippetL03S13 from "../assets/snippets/snippet-l03-s13.mdx";	
+import SnippetL03S14 from "../assets/snippets/snippet-l03-s14.mdx";	
+import SnippetL03S15 from "../assets/snippets/snippet-l03-s15.mdx";	
+import SnippetL03S16 from "../assets/snippets/snippet-l03-s16.mdx";
+
+<div><h1><strong>JavaScript for everyone</strong></h1></div>
+
+<Language
+  currentLanguage="ru"
+  languages={{"ua": "lectures/javascript-for-everyone", "ru": "lectures/javascript-for-everyone/ru"}
+}/>
+
+<VideoWrapper duration="50 сек">
+  <iframe src="https://www.youtube.com/embed/YUgKHOaal8k" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+</VideoWrapper>
+
+<div>
+  <div class="author">
+    <div class="avatar-wrapper">
+      <object class="avatar-object" data={romanSahan2017Avatar} role="img" aria-label="Roman Sahan"></object>
+    </div>
+    <div class="profile">
+      <h3 class="name">Роман Саган</h3>
+      {/* <ul class="contacts">
+        <li>
+          <a href="https://www.facebook.com/roman.sahan.4" rel="author" class="facebook">
+            <FontAwesomeIcon icon={faFacebookSquare} className="icon" />
+            <span>roman.sahan</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/sahanr" rel="author" class="github">
+            <FontAwesomeIcon icon={faGithub} className="icon" />
+            <span>sahanr</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/roman-sahan-35847512a/" rel="author" class="linkedin">
+            <FontAwesomeIcon icon={faLinkedin} className="icon" />
+            <span>roman-sahan</span>
+          </a>
+        </li>
+      </ul> */}
+      <p class="about">
+        Роман прошел Академию в 2016-м и остался в <a href="https://binary-studio.com"><strong>Binary Studio</strong></a>. Работает на проекте, который визуализирует огромное количество данных с помощью <a href="https://reactjs.org/"><strong>React</strong></a>. Любит чистый и хорошо структурированный код, покорять горы и фреймворки и с удовольствием смотрит и играет в футбол ⚽.
+      </p>
+    </div>
+  </div>
+  <div class="bubble" style="margin: -0.5em 1em 1em;">
+    <strong>Hello, world! 👋</strong><br />
+    Расскажу обо всех радости современного JavaScript, начиная от базового синтаксиса и заканчивая <em>(осторожно, жаргон!)</em> модулями, бандлерами и транспайлерами. Перед тем как начать - несколько дисклеймер о содержании лекции:<br />
+    <ol class="compact inverted">
+      <li>некоторые термины и технологии рассматриваются поверхностно;</li>
+      <li>"— А кликать на все ссылки на документацию и читать все-все статьи?" Ну-у-у-у-у, up to you;</li>
+      <li>все должно было быть интересно и по максимуму информативно, но тут уж как получится... Have fun! 🙃</li>
+    </ol>
+    <p>И еще один <strong>heads up</strong> — вам понадобится <a href="https://code.visualstudio.com/"><strong>Visual Studio Code</strong></a>, <a href="https://nodejs.org/en/"><strong>Node.js</strong></a> и <a href="https://github.com/binary-studio-academy/stage-2-es6-for-everyone"><strong>стартер проекта</strong></a> (буду собирать его по ходу лекции). Готовы? Погнали!</p>
+  </div>
+</div>
+
+<div class="messages">
+  Студент все еще проходит испытательный срок в своей новой компании и все еще использует Slack для сотрудничества с другими разработчиками и коммуникации с клиентами. Однажды, теплым весенним вечером в чат пишет Ryu - бывший клиент <em>(returning customer, ya-a-a-ay!)</em>, для которого ранее было сделано онлайн-резюме. Он полностью доволен качеством нашей работы и хочет доверить нам еще один проект &mdash;
+  <SlackMessage
+    senderId="ryu"
+    senderName="Ryu"
+    senderAvatarUrl={ryuAvatar}
+    reactions={[
+      { emoji: "💪", count: 13 },
+      { emoji: "🥇", count: 9 },
+      { emoji: "🎮", count: 7 },
+      { emoji: "💀", count: 12 },
+      { emoji: "😤", count: 11 },
+      { emoji: "🐲", count: 5 }
+    ]}
+    replies={[
+      { name: "Oleksandr Kovalov", avatarUrl: oleksandrKovalovAvatar },
+      { name: "Andrii Karun", avatarUrl: andriiKarunAvatar },
+      { name: "Oleg Chulanovskyi", avatarUrl: olegChulanovskyiAvatar },
+      { name: "Alexandr Tovmach", avatarUrl: alexandrTovmachAvatar },
+      { name: "Artem Manukian", avatarUrl: artemManukianAvatar },
+      { name: "Yuriy Stetsula", avatarUrl: yuriyStetsulaAvatar }
+    ]}
+  >
+    <div class="message__scene">
+      <em>(stares intently at you, his headband fluttering in the wind)</em>
+    </div>
+    <p>To live is to fight, and to fight is to live.</p>
+    <div class="message__scene">
+      <em>(clenches his fist)</em>
+    </div>
+    <p>I’ve spent all my life defeating my enemies, perfecting my martial skills, and learning the true essence of what it means to be an honorable warrior. But now my greatest challenge lies before me.</p>
+    <div class="message__scene">
+      <em>(raising his hand into the air, Ryu’s hand is engulfed in flame, and he brings it cr-r-r-r-rashing down to the ground, splitting the Earth in two as a hot knife would cut through butter)</em>
+    </div>
+    <p><strong>I need my own browser game.</strong></p>
+    <Flute />
+    <p>My master tells me that it’s necessary to promote my “brand image”. I have no idea what he means by that, but then again, I am not one to question his wisdom. I am sure, in time, the “fanbase” I will acquire through this game will bring me great strength in the battles to come.</p>
+    <div class="message__scene">
+      <em>(Ryu once again turns his gaze upon you)</em>
+    </div>
+    <p>Please go forth and complete this task for me.  In return, I promise to avenge any relatives who may have been killed by your arch nemesis, or restore your family honor, or… whatever. We’ll work out contract details later.</p>
+    <div class="message__scene">
+      <em>(Ryu turns his back and begins to walk away)</em>
+    </div>
+    <p>For now I will go meditate. Let me know if you have any questions ― WiFi is a bit spotty up at the Mountain Temple, but I’ll check my email whenever I get the chance.</p>
+  </SlackMessage>
+</div>
+
+Итак, спецификации нет, но похоже на то, что на этот раз речь идет о симулятор "уличной драки" - игра, в которой игрок выбирает двух бойцов, которые в свою очередь проводят поединок, лупя друг друга руками, ногами, своей головой. У кого скорее "закончится жизнь", тот и проиграл. На самом деле они не умирают, потому что они виртуальные.
+
+<SlackMessage
+  senderId="ryu"
+  senderName="Ryu"
+  senderAvatarUrl={ryuAvatar}
+  reactions={[
+    { emoji: "😤", count: 1 },
+    { emoji: "😡", count: 1 },
+    { emoji: "🙏", count: 1 },
+    { emoji: "😂", count: 10 },
+    { emoji: "🤣", count: 8 }
+  ]}
+  replies={[
+    { name: "You", avatarUrl: youAvatar },
+    { name: "Ryu", avatarUrl: ryuAvatar }
+  ]}
+>
+  Who isn't real? Me not real?! Your not real, 🤬!
+</SlackMessage>
+
+🤭Ой... 🤔_Или умирают..._ Заказчик не предоставил ни одного конкретного технического задания, поэтому составим его себе сами. Так же как и дизайн. Пусть в начале это будет просто браузерная игра, в которой один персонаж систематически бьет другого и наоборот, а алгоритм умеренной сложности определяет, какой силы был нанесен удар и сколько жизни осталось у того медленного неудачники, не успел уклониться от "с локтя в нос". А там дальше уже посмотрим, новый функционал или дизайн можно успеть закодить до дедлайна. Что ж, заверить клиента, что все под контролем и к работе?
+
+<SlackMessage
+  senderId="you"
+  senderName="You"
+  senderAvatarUrl={youAvatar}
+  reactions={[
+    { emoji: "👍", count: 13 },
+    { emoji: "🏁", count: 8 },
+    { emoji: "🚀", count: 10 },
+    { emoji: "👏", count: 6 }
+  ]}
+  replies={[
+    { name: "Ryu", avatarUrl: ryuAvatar },
+    { name: "Andrii Karun", avatarUrl: andriiKarunAvatar },
+    { name: "Oleksandr Kovalov", avatarUrl: oleksandrKovalovAvatar },
+    { name: "Alyona Rapova", avatarUrl: alyonaRapovaAvatar },
+    { name: "Nikita Semenistyi", avatarUrl: nikitaSemenistyiAvatar }
+  ]}
+>
+  <strong>Yeah, sure, I'm on it, let's go!</strong> I'm gonna target modern browsers and will start with the plain JavaScript using new features where necessary. Sometime in the future, when the project evolves, we'll use libraries like React or Vue.js, but for now, vanilla JavaScript will do the job just fine.
+</SlackMessage>
+
+<div id="table-of-contents" class="table-of-contents" style="margin-top: 1.5em;">
+  <TimelineOfContents timeline={[{
+    linkTo: "#basic-javascript",
+    title: "Basic JavaScript"
+  }, {
+    linkTo: "#building-a-webpage-with-javascript",
+    title: "Building a webpage with JavaScript"
+  }, {
+    linkTo: "#modules-transpiling-bundling-etc",
+    title: "Modules, transpiling, bundling, etc."
+  }]} />
+</div>
+
+<Level id="basic-javascript" number="1" name="Basic JavaScript" difficulty="Nothing special 🤷‍♂️." objectives="Get a general idea about JavaScript." />
+
+<VideoWrapper duration="10 хв 57 сек">
+  <iframe src="https://www.youtube.com/embed/bVhnIdxD2uo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+</VideoWrapper>
+
+<ol>
+  <li>
+    <p><strong>Ready to try <a href="https://www.javascript.com/">JavaScript</a>?</strong></p>
+    <p>To start with, here are <strong>the main points</strong> you should remember about JS:</p>
+    <p><span class="chip">Brendan Eich</span><span class="chip">EcmaScript</span><span class="chip">script language</span><span class="chip">dynamic language</span><span class="chip">dynamically typed</span><span class="chip">first-class functions</span><span class="chip">object-oriented</span><span class="chip">prototype-based</span><span class="chip">asynchronous</span><span class="chip">single-threaded</span></p>
+  </li>
+  <li>
+    <p><strong><a href="https://medium.freecodecamp.org/code-comments-the-good-the-bad-and-the-ugly-be9cc65fbf83">Putting comments in code</a></strong></p>
+    <p>The syntax of comments is the same as in C++ and in many other languages. Comments behave like white space and are discarded during script execution.</p>
+
+<SnippetL01S01 />
+
+<SnippetL01S02 />
+
+  </li>
+  <li>
+    <p><strong>Declaring variables: <code>var</code>, <code>let</code> and <code>const</code></strong></p>
+    <p>There are three kinds of declarations in JavaScript:</p>
+    <ul>
+      <li class="details">
+        <input type="checkbox" id="accordion-3-1" />
+        <label class="summary" for="accordion-3-1">
+          <code>var</code> declares a variable, optionally initializing it to a value
+        </label>
+  <div class="details-body">
+
+<SnippetL01S03 />
+  
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-3-2" />
+        <label class="summary" for="accordion-3-2">
+          <code>let</code> declares a block-scoped, local variable, optionally initializing it to a value
+        </label>
+  <div class="details-body">
+
+<SnippetL01S04 />
+  
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-3-3" />
+        <label class="summary" for="accordion-3-3">
+          <code>const</code> declares a block-scoped, read-only named constant
+        </label>
+  <div class="details-body">
+
+<SnippetL01S05 />
+  
+  </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Data Types</strong></p>
+    <p>According to the <strong>ECMAScript</strong>, there are seven primitive types and everything else is an Object type. Let’s run over those one by one.</p>
+    <ul>
+      <li class="details">
+        <input type="checkbox" id="accordion-4-1" />
+        <label class="summary" for="accordion-4-1">
+          <strong>Boolean</strong>
+        </label>
+  <div class="details-body">
+    <p>The boolean type has two values: <code>true</code> and <code>false</code>.</p>
+
+<SnippetL01S06 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-4-2" />
+        <label class="summary" for="accordion-4-2">
+          <strong>Number</strong>
+        </label>
+  <div class="details-body">
+    <p>An integer or floating point number.</p>
+
+<SnippetL01S07 />
+
+<SnippetL01S08 />
+
+The number type has three symbolic values: `+Infinity`, `-Infinity`, and `NaN` (not-a-number).
+
+<SnippetL01S09 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-types-bigint" />
+        <label class="summary" for="accordion-types-bigint">
+          <strong>BigInt</strong> (added in ES2020)
+        </label>
+  <div class="details-body">
+    <p>The BigInt type represent integers with arbitrary precision.</p>
+
+<SnippetL01S25 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-4-3" />
+        <label class="summary" for="accordion-4-3">
+          <strong>String</strong>
+        </label>
+  <div class="details-body">
+    <p>A sequence of characters that represent a text value. JavaScript <strong>strings are immutable</strong>.</p>
+
+<SnippetL01S10 />
+
+<SnippetL01S11 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-4-4" />
+        <label class="summary" for="accordion-4-4">
+          <strong>null</strong>
+        </label>
+  <div class="details-body">
+    <p><code>null</code> is a special keyword denoting a null value.</p>
+
+<SnippetL01S12 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-4-5" />
+        <label class="summary" for="accordion-4-5">
+          <strong>undefined</strong>
+        </label>
+  <div class="details-body">
+    <p><code>undefined</code> is a top-level property whose value is not defined.</p>
+
+<SnippetL01S13 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-4-6" />
+        <label class="summary" for="accordion-4-6">
+          <strong>Symbol</strong>
+        </label>
+  <div class="details-body">
+    <p>A Symbol is a unique and immutable primitive value and may be used as the key of an Object property.</p>
+
+<SnippetL01S14 />
+
+  </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong><a href="https://medium.freecodecamp.org/js-type-coercion-explained-27ba3d9a2839">Type coercion</a></strong></p>
+    <p>JavaScript variables can be converted to a new variable and another data type either by the use of a JavaScript function or automatically by JavaScript itself:</p>
+
+Converting to **string**
+
+<SnippetL01S15 />
+
+Converting to **numbers**
+
+<SnippetL01S16 />
+
+Converting to **boolean**
+
+<SnippetL01S17 />
+
+  </li>
+  <li>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling" title="Control flow"><strong>Control flow</strong></a></p>
+    <ul>
+      <li>Block statement</li>
+      <li>
+        Conditional statements
+        <ul>
+          <li class="details">
+            <input type="checkbox" id="accordion-6-1" />
+            <label class="summary" for="accordion-6-1">
+              <code>if...else</code> statement
+            </label>
+  <div class="details-body">
+
+<SnippetL01S18 />
+  
+  </div>
+          </li>
+          <li class="details">
+            <input type="checkbox" id="accordion-6-2" />
+            <label class="summary" for="accordion-6-2">
+              <code>switch</code> statement
+            </label>
+  <div class="details-body">
+
+<SnippetL01S19 />
+  
+  </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration" title="Loops and iteration"><strong>Loops and iteration</strong></a></p>
+    <p>Loops offer a quick and easy way to do something repeatedly. The statements for loops provided in JavaScript are:</p>
+    <ul>
+      <li class="details">
+        <input type="checkbox" id="accordion-7-1" />
+        <label class="summary" for="accordion-7-1">
+          <code>for</code> statement, <code>break</code> statement, <code>continue</code> statement
+        </label>
+  <div class="details-body">
+
+<SnippetL01S20 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-7-2" />
+        <label class="summary" for="accordion-7-2">
+          <code>while</code> statement
+        </label>
+  <div class="details-body">
+
+<SnippetL01S21 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-7-3" />
+        <label class="summary" for="accordion-7-3">
+          <code>do...while</code> statement
+        </label>
+  <div class="details-body">
+
+<SnippetL01S22 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-7-4" />
+        <label class="summary" for="accordion-7-4">
+          <code>for...of</code> statement
+        </label>
+  <div class="details-body">
+
+<SnippetL01S23 />
+  
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-7-5" />
+        <label class="summary" for="accordion-7-5">
+          <code>for...in</code> statement
+        </label>
+  <div class="details-body">
+
+<SnippetL01S24 />
+  
+  </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<Level id="building-a-webpage-with-javascript" number="2" name="Building a webpage with JavaScript" difficulty="Let's spice it up 🔥." objectives="Gain practical knowledge." />
+
+<VideoWrapper duration="39 хв 42 сек">
+  <iframe src="https://www.youtube.com/embed/P_SyGfORElk" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+</VideoWrapper>
+
+<ol>
+  <li>
+    <div class="details">
+      <label class="summary" for="accordion-2-1-1">
+        Get data from remote <strong><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction">API</a></strong> using <code>fetch</code>
+      </label>
+      <input type="checkbox" id="accordion-2-1-1" />
+  <div class="details-body">
+
+<SnippetL02S01 />
+
+  <ul>
+    <li class="details">
+      <input type="checkbox" id="accordion-2-1-2" />
+      <label class="summary" for="accordion-2-1-2">
+        What is a <code>Promise</code>?
+      </label>
+  <div class="details-body">
+
+<SnippetL02S02 />
+
+  <img src="https://i.imgur.com/iB1wjrw.png"/>
+  </div>
+    </li>
+    <li class="details">
+      <input type="checkbox" id="accordion-2-1-3" />
+      <label class="summary" for="accordion-2-1-3">
+        Add <code>then</code> method
+      </label>
+  <div class="details-body">
+
+<SnippetL02S03 />
+  
+  </div>
+    </li>
+    <li class="details">
+      <input type="checkbox" id="accordion-2-1-4" />
+      <label class="summary" for="accordion-2-1-4">
+        Get response body
+      </label>
+  <div class="details-body">
+
+<SnippetL02S04 />
+
+  </div>
+    </li>
+    <li class="details">
+      <input type="checkbox" id="accordion-2-1-5" />
+      <label class="summary" for="accordion-2-1-5">
+        Get file content and parse it (<code>Promise</code> chain)
+      </label>
+  <div class="details-body">
+
+<SnippetL02S05 />
+  
+  </div>
+    </li>
+  </ul>
+  </div>
+    </div>
+  </li>
+  <li>
+    <div class="details">
+      <label class="summary" for="accordion-2-2-1">
+        Check data types from response (<code>Array</code> and <code>Object</code>)
+      </label>
+      <input type="checkbox" id="accordion-2-2-1" />
+  <div class="details-body">
+
+<SnippetL02S06 />
+
+  <ul>
+    <li class="details">
+      <input type="checkbox" id="accordion-2-3-1" />
+      <label class="summary" for="accordion-2-3-1">
+        Understanding <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects"><strong>standard built-in objects</strong></a> (<code>RegExp</code>, <code>Date</code>, <code>JSON</code>, <code>Number</code>, <code>Math</code>, etc.)
+      </label>
+  <div class="details-body">
+
+<SnippetL02S07 />
+  
+  </div>
+    </li>
+  </ul>
+  </div>
+    </div>
+  </li>
+  <li>
+    <div class="details">
+      <label class="summary" for="accordion-2-4-1">
+        Display data using <strong><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">DOM</a> API</strong> (<code>getElementById</code>, <code>getElementsByClassName</code>, <code>querySelector</code>, etc.)
+      </label>
+      <input type="checkbox" id="accordion-2-4-1" />
+  <div class="details-body">
+
+<SnippetL02S08 />
+  
+  </div>
+    </div>
+  </li>
+  <li>
+    Learn more about <strong>Promises</strong>:
+    <ul>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-5-1" />
+        <label class="summary" for="accordion-2-5-1">
+          onRejected handler
+        </label>
+  <div class="details-body">
+
+<SnippetL02S09 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-5-2" />
+        <label class="summary" for="accordion-2-5-2">
+          <code>catch</code> method
+        </label>
+  <div class="details-body">
+
+<SnippetL02S10 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-5-3" />
+        <label class="summary" for="accordion-2-5-3">
+          <code>throw new Error</code>
+        </label>
+  <div class="details-body">
+
+<SnippetL02S11 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-5-4" />
+        <label class="summary" for="accordion-2-5-4">
+          <code>Promise.reject</code>
+        </label>
+  <div class="details-body">
+
+<SnippetL02S12 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-5-5" />
+        <label class="summary" for="accordion-2-5-5">
+          Add loading overlay
+        </label>
+  <div class="details-body">
+
+<SnippetL02S13 />
+
+<SnippetL02S14 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-5-6" />
+        <label class="summary" for="accordion-2-5-6">
+          <code>finally</code>
+        </label>
+  <div class="details-body">
+
+<SnippetL02S15 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-5-7" />
+        <label class="summary" for="accordion-2-5-7">
+          <code>Promise.resolve</code>
+        </label>
+  <div class="details-body">
+
+<SnippetL02S16 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-5-8" />
+        <label class="summary" for="accordion-2-5-8">
+          How to create a <code>new Promise</code>
+        </label>
+  <div class="details-body">
+
+<SnippetL02S17 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-5-9" />
+        <label class="summary" for="accordion-2-5-9">
+          <code>Promise.race</code> and <code>Promise.all</code>
+        </label>
+  <div class="details-body">
+
+<SnippetL02S18 />
+
+  </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <div class="details">
+      <label class="summary" for="accordion-2-6-1">
+        Add more <strong>Functions</strong>
+      </label>
+      <input type="checkbox" id="accordion-2-6-1" />
+  <div class="details-body">
+
+<SnippetL02S19 />
+
+  <ul>
+    <li class="details">
+      <input type="checkbox" id="accordion-2-6-2" />
+      <label class="summary" for="accordion-2-6-2">
+        Arrow functions
+      </label>
+  <div class="details-body">
+
+<SnippetL02S20 />
+
+  </div>
+    </li>
+    <li class="details">
+      <input type="checkbox" id="accordion-2-6-3" />
+      <label class="summary" for="accordion-2-6-3">
+        Default arguments
+      </label>
+  <div class="details-body">
+
+<SnippetL02S21 />
+
+  </div>
+    </li>
+    <li class="details">
+      <input type="checkbox" id="accordion-2-6-4" />
+      <label class="summary" for="accordion-2-6-4">
+        Async functions
+      </label>
+  <div class="details-body">
+
+<SnippetL02S22 />
+
+<SnippetL02S23 />
+
+  </div>
+    </li>
+    <li class="details">
+      <input type="checkbox" id="accordion-2-6-5" />
+      <label class="summary" for="accordion-2-6-5">
+        Generators
+      </label>
+  <div class="details-body">
+
+<SnippetL02S24 />
+
+<SnippetL02S25 />
+
+  </div>
+    </li>
+  </ul>
+  </div>
+  </div>
+  </li>
+  <li>
+    <div class="details">
+      <label class="summary" for="accordion-2-7-1">
+        <strong>Handle errors</strong> using <code>try...catch</code> statement
+      </label>
+      <input type="checkbox" id="accordion-2-7-1" />
+  <div class="details-body">
+
+<SnippetL02S26 />
+
+  </div>
+    </div>
+  </li>
+  <li>
+    Create more <strong>DOM elements</strong> and add <strong>event listeners</strong>
+    <ul>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-8-1" />
+        <label class="summary" for="accordion-2-8-1">
+          Add helper function for creating a DOM element
+        </label>
+  <div class="details-body">
+
+<SnippetL02S27 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-8-2" />
+        <label class="summary" for="accordion-2-8-2">
+          Create name and image elements
+        </label>
+  <div class="details-body">
+
+<SnippetL02S28 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-8-3" />
+        <label class="summary" for="accordion-2-8-3">
+          Create fighter
+        </label>
+  <div class="details-body">
+
+<SnippetL02S29 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-8-4" />
+        <label class="summary" for="accordion-2-8-4">
+          Create fighters
+        </label>
+  <div class="details-body">
+
+<SnippetL02S30 />
+
+  <p>Using the <a href="https://medium.freecodecamp.org/spread-operator-and-rest-parameter-in-javascript-es6-4416a9f47e5e"><strong>spread operator and rest parameter</strong></a>:</p>
+  <ul>
+    <li class="details">
+      <input type="checkbox" id="accordion-2-8-4-1" />
+      <label class="summary" for="accordion-2-8-4-1">
+        How to <strong>spread</strong>?
+      </label>
+  <div class="details-body">
+
+<SnippetL02S31 />
+
+  </div>
+    </li>
+    <li class="details">
+      <input type="checkbox" id="accordion-2-8-4-2" />
+      <label class="summary" for="accordion-2-8-4-2">
+        How to <strong>rest</strong>?
+      </label>
+  <div class="details-body">
+
+<SnippetL02S32 />
+
+  </div>
+    </li>
+  </ul>
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-8-5" />
+        <label class="summary" for="accordion-2-8-5">
+          Append fighters to the root element
+        </label>
+  <div class="details-body">
+
+<SnippetL02S33 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-8-6" />
+        <label class="summary" for="accordion-2-8-6">
+          Add events
+        </label>
+  <div class="details-body">
+
+<SnippetL02S34 />
+
+  </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <div class="details">
+      <label class="summary" for="accordion-2-9-1">
+        Use <strong><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Keyed_collections">keyed collection</a></strong> to hold key-value pairs (<code>Map</code> or <code>Set</code>)
+      </label>
+      <input type="checkbox" id="accordion-2-9-1" />
+  <div class="details-body">
+
+<SnippetL02S35 />
+
+  </div>
+    </div>
+  </li>
+  <li>
+    Add <strong>classes</strong> (use inheritance and static properties)
+    <ul>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-10-0" />
+        <label class="summary" for="accordion-2-10-0">
+          Create <code>FighterService</code> class
+        </label>
+  <div class="details-body">
+
+<SnippetL02S36 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-10-1" />
+        <label class="summary" for="accordion-2-10-1">
+          Add <code>View</code> class
+        </label>
+  <div class="details-body">
+
+<SnippetL02S37 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-10-2" />
+        <label class="summary" for="accordion-2-10-2">
+          What are <em>getters</em> and <em>setters</em>?
+        </label>
+  <div class="details-body">
+
+<SnippetL02S38 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-10-3" />
+        <label class="summary" for="accordion-2-10-3">
+          Create <code>Fighters</code> and <code>Fighter</code> class
+        </label>
+  <div class="details-body">
+
+<SnippetL02S39 />
+
+  </div>
+      </li>
+      <li>
+        What is <code>super()</code> and <code>super.parentMethod()</code>?
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-10-4" />
+        <label class="summary" for="accordion-2-10-4">
+          Add <code>App</code> class
+        </label>
+  <div class="details-body">
+
+<SnippetL02S40 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-2-10-5" />
+        <label class="summary" for="accordion-2-10-5">
+          <code>bind</code>, <code>call</code>, and <code>apply</code>
+        </label>
+  <div class="details-body">
+
+<SnippetL02S41 />
+
+  </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    💥<strong>Boom, done! Половина есть!</strong>
+  </li>
+</ol>
+
+<Level id="modules-transpiling-bundling-etc" number="3" name="Modules, transpiling, bundling, etc." difficulty="And now we gonna roll 🤸." objectives="Get the most out of the JS." />
+
+<VideoWrapper duration="28 хв 5 сек">
+  <iframe src="https://www.youtube.com/embed/1OYgnBaZW6A" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+</VideoWrapper>
+
+<ol>
+  <li>
+    <p>Hold on, <a href="https://medium.com/siliconwat/how-javascript-classes-work-80b0cf483b1d"><strong>How JavaScript Classes Work Under the Hood</strong></a> again?</p>
+    <ul>
+      <li class="details">
+        <input type="checkbox" id="accordion-3-1-1" />
+        <label class="summary" for="accordion-3-1-1">
+          What's <code>__proto__</code>?
+        </label>
+  <div class="details-body">
+
+<SnippetL03S01 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-3-1-2" />
+        <label class="summary" for="accordion-3-1-2">
+          And the <code>constructor</code>?
+        </label>
+  <div class="details-body">
+
+<SnippetL03S02 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-3-1-3" />
+        <label class="summary" for="accordion-3-1-3">
+          How to create an instance?
+        </label>
+  <div class="details-body">
+
+<SnippetL03S03 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-3-1-4" />
+        <label class="summary" for="accordion-3-1-4">
+          How to add a method?
+        </label>
+  <div class="details-body">
+
+<SnippetL03S04 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-3-1-5" />
+        <label class="summary" for="accordion-3-1-5">
+          But how does inheritance works?
+        </label>
+  <div class="details-body">
+
+<SnippetL03S05 />
+
+  </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Let's learn more about the <strong>transpilers</strong> — tools that read source code written in one programming language, and produce the equivalent code in another language. The most popular one, <a href="https://babeljs.io/"><strong>Babel</strong></a>, is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments. Let's try it out:</p>
+    <ul>
+      <li>
+        Install <a href="https://nodejs.org/en/"><strong>node.js</strong></a>, open <strong>Terminal</strong> in Visual Studio Code <sup><em>(Terminal</em> &rarr; <em>New Terminal)</em></sup>, and run <code>npm init</code>.
+      </li>
+      <li>
+        Now install <strong>babel</strong> with <code>npm install --save-dev @babel/core @babel/cli</code>
+      </li>
+      <li>
+        Add <code>"scripts"</code> to the <strong>package.json</strong> file
+  <div>
+
+<SnippetL03S06 />
+
+  </div>
+        and run <code>npm run build</code> in the terminal to see if it works
+      </li>
+      <li>
+        Set up transpiling of ES2015+ code — <code>npm install @babel/preset-env --save-dev</code>, create a <strong>.babelrc</strong> in the root of your project, with the following content:
+  <div>
+
+<SnippetL03S07 />
+
+  </div>
+      </li>
+      <li>
+        We need more nice things — <code>npm install @babel/plugin-proposal-class-properties --save-dev</code> and add that plugin to <strong>.babelrc</strong>:
+
+  <div>
+
+<SnippetL03S08 />
+
+  </div>
+      </li>
+      <li>
+        Let's watch for changes by running <code>babel</code> with <code>-w</code> flag
+
+  <div>
+
+<SnippetL03S09 />
+
+  </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    What’s great about <strong>ES6 modules</strong>?
+    <ul>
+      <li class="details">
+        <input type="checkbox" id="accordion-3-3-1" />
+        <label class="summary" for="accordion-3-3-1">
+          Export functions, objects, or primitive values from the module with <code>export</code> statement
+        </label>
+  <div class="details-body">
+
+<SnippetL03S10 />
+
+  </div>
+      </li>
+      <li class="details">
+        <input type="checkbox" id="accordion-3-3-2" />
+        <label class="summary" for="accordion-3-3-2">
+          👆Load that stuff with <code>import</code> statement
+        </label>
+  <div class="details-body">
+
+<SnippetL03S11 />
+
+  </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    Alright, let's <span style="text-decoration: line-through;"><em>npminstall everything</em></span> set up <a href="https://webpack.js.org/"><strong>Webpack</strong></a> — a module bundler for JavaScript applications:
+    <ul>
+      <li>
+        Install Webpack by running <code>npm install webpack webpack-cli --save-dev</code>, then create a file named <strong>webpack.config.js</strong> in the root of your project, with the following content:
+  <div>
+
+<SnippetL03S12 />
+
+  </div>
+      </li>
+      <li>
+        Set <code>build</code> command in <strong>package.json</strong>'s <code>scripts</code> key to <code>"build": "webpack"</code>
+      </li>
+      <li>
+        <p>Set up <a href="https://webpack.js.org/loaders/"><strong>loaders</strong></a>:</p>
+        <ul>
+          <li class="details">
+            <input type="checkbox" id="accordion-3-4-1" />
+            <label class="summary" for="accordion-3-4-1">
+              Add <code>babel-loader</code> to transpile code, as was mentioned before
+            </label>
+  <div class="details-body">
+
+<code>npm install babel-loader --save-dev</code> and edit <strong>webpack.config.js</strong> to include <code>module</code> key:
+
+<SnippetL03S13 />
+
+Rename **.babelrc** to **babel.config.js** and change it's content:
+
+<SnippetL03S14 />
+
+  </div>
+          </li>
+          <li class="details">
+            <input type="checkbox" id="accordion-3-4-2" />
+            <label class="summary" for="accordion-3-4-2">
+              Add <code>style-loader</code> and <code>css-loader</code>, so that you could import styles in your JavaScript files with <code>import './src/styles/styles.css';</code>
+            </label>
+  <div class="details-body">
+
+As usual, just `npm install css-loader style-loader --save-dev` and edit <strong>webpack.config.js</strong> to include new rules:
+
+<SnippetL03S15 />
+
+  </div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        Add <a href="https://webpack.js.org/configuration/dev-server/"><strong>Webpack DevServer</strong></a> — <code>npm install webpack-dev-server --save-dev</code> and modify <strong>webpack.config.js</strong> to include <code>devServer</code> and <code>publicPath</code> keys:
+  <div>
+
+<SnippetL03S16 />
+
+  </div>
+        <p>Add <code>"start": "webpack-dev-server"</code> to <strong>package.json</strong>'s <code>scripts</code> key</p>
+      </li>
+      <li>
+        Maybe add <code>devtool</code> option to the <strong>webpack.config.js</strong> for much better debugging experience — <code>devtool: "source-map"</code>
+      </li>
+    </ul>
+  </li>
+  <li>
+    🥁<strong>Badum tss! Отрефакторино!</strong>
+  </li>
+</ol>
+
+<hr />
+
+<ThatsAllFolks />
+
+<VideoWrapper duration="20 сек">
+  <iframe src="https://www.youtube.com/embed/8NT-tVg2oKQ" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+</VideoWrapper>
+
+<div class="bubble">
+  Если ты доскролил до этого момента, то тогда поздравляю - это уже финиш 🙂. Спосибо за внимание 🙏! Жду вопросы и комментарии под этой лекцией в личном кабинете <a href="https://academy.binary-studio.com/"><strong>Binary Studio Academy</strong></a>. И конечно же - успехов с домашкой! <strong>Enjoy 🙃</strong>
+</div>
+
+export const metadata = {
+  orderId: 2,
+  author: "Роман Саган",
+  title: "JavaScript for everyone",
+  description: "Роман швиденько розказує про основні поняття <strong>JavaScript</strong>, потім пише фронтенд для простої інтерактивної веб-сторінки, використовуючи <strong>DOM API</strong> для створення елементів та найбільш популярні функції <strong>JavaScript</strong> для обробки даних, а також пояснює про модулі, транспайлери, бандлери.",
+  keywords: ["hola", "guapa"],
+  duration: "1 год 19 хв",
+  publishedAt: "2021-05-05T00:00:00",
+  hiddenFromMainPage: true,
+}
+
+export default Lecture;
