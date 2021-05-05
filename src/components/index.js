@@ -13,3 +13,4 @@ export { default as SlackMessage } from "./SlackMessage/SlackMessage";
 export { default as ThatsAllFolks } from "./ThatsAllFolks/ThatsAllFolks";
 export { default as TimelineOfContents } from "./TimelineOfContents/TimelineOfContents";
 export { default as VideoWrapper } from "./VideoWrapper/VideoWrapper";
+export { default as Language } from "./Language/Language";

@@ -4,7 +4,8 @@ import {
   TimelineOfContents,
   Level,
   ThatsAllFolks,
-  VideoWrapper
+  VideoWrapper,
+  Language,
 } from "../../../../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -27,6 +28,11 @@ import "../styles.css";
     <strong>Modern java</strong>
   </h1>
 </div>
+
+<Language
+  currentLanguage="ua"
+  languages={{"ru": "lectures/modern-java", "ua": "lectures/modern-java/ua"}
+}/>
 
 <VideoWrapper duration="1 час 24 хв.">
   <iframe
@@ -441,7 +447,8 @@ export const metadata = {
   description: "В цій лекції розглянемо базову інформацію, екосистему та фічі <strong>Java</strong>. Після цього Кирило розповість про структуру gradle проекту та створить невеликий веб-застосунок з використанням веб-серверу Undertow",
   keywords: ["Java", "JVM", "Modern Java", "Undertow"],
   duration: "1 час 25 хв.",
-  publishedAt: "2019-05-19T15:00:00"
+  publishedAt: "2021-05-05T00:00:00",
+  hiddenFromMainPage: true,
 }
 
 export default Lecture;

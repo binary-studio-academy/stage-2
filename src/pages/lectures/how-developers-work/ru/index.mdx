@@ -1,4 +1,4 @@
-import { Lecture, VideoWrapper, SlackMessage, FacebookMessage, TimelineOfContents, Level, Accordion, RadarChart, ThatsAllFolks } from "../../../../components";
+import { Lecture, VideoWrapper, SlackMessage, FacebookMessage, TimelineOfContents, Level, Accordion, RadarChart, ThatsAllFolks, Language } from "../../../../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faGlobe, faQuestionCircle } from "@fortawesome/pro-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/pro-regular-svg-icons";
@@ -25,6 +25,11 @@ import {
 } from "../../../../assets/images/avatars/slack-squared";
 
 <div><h1><strong>How developers work</strong></h1></div>
+
+<Language
+  currentLanguage="ru"
+  languages={{"ua": "lectures/how-developers-work", "ru": "lectures/how-developers-work/ru"}
+}/>
 
 <VideoWrapper duration="3 мин 3 сек">
   <iframe src="https://www.youtube.com/embed/Erzsn5SoczI" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
@@ -695,7 +700,8 @@ export const metadata = {
   description: "Воркшоп по <strong><code>git</code></strong> и <strong>GitHub</strong>, в ходе которого Володя показывает, как создать и следить за репозиторием, вести проект и документацию, работать в команде, коммитить, используя терминал и клиенты с графическим интерфейсом, а также составляет простую веб-страницу и хостит её через <strong>GitHub Pages</strong>.",
   keywords: ["hola", "guapa"],
   duration: "1 ч 28 мин",
-  publishedAt: "2020-04-30T10:00:00"
+  publishedAt: "2020-04-29T10:00:00",
+  hiddenFromMainPage: true,
 }
 
 export default Lecture;

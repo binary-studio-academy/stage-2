@@ -88,7 +88,10 @@ const Index = ({ data: { allMdx: { edges: data } } }) => (
               </div>
             </div>
             <div className="columns">
-              {data.map(({ node: { fields: { slug }, exports: { metadata: { title, description, author, duration, publishedAt, orderId } } } }, index) => {
+              {data
+                .filter(({ node: { exports: { metadata: { hiddenFromMainPage }}}}) => !hiddenFromMainPage)
+                .map(({ node: { fields: { slug }, exports: { metadata: { title, description, author, duration, publishedAt } } } }, index) => {
+
                 const lectureTitle = <h2 className="lecture-title">
                   <span><strong>{title}</strong></span>
                 </h2>;
@@ -123,7 +126,7 @@ const Index = ({ data: { allMdx: { edges: data } } }) => (
                             <span className="lecture-duration text-gray"><small>{duration}</small></span>
                           }
                         </div>
-                        {orderId && <span className="lecture-number text-gray"><small>#{orderId}</small></span>}
+                        {<span className="lecture-number text-gray"><small>#{index+1}</small></span>}
                       </div>
                     </div>
                   </div>
@@ -161,6 +164,7 @@ export const pageQuery = graphql`
               author
               publishedAt
               duration
+              hiddenFromMainPage
             }
           }
         }
