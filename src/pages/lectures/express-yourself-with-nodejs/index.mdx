@@ -1,4 +1,4 @@
-import { Lecture, SlackMessage, TimelineOfContents, Level, ThatsAllFolks, VideoWrapper, Accordion, RadarChart } from "../../../components";
+import { Lecture, SlackMessage, TimelineOfContents, Level, ThatsAllFolks, VideoWrapper, Accordion, RadarChart, Language } from "../../../components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe, faQuestionCircle } from "@fortawesome/pro-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/pro-regular-svg-icons";
@@ -36,6 +36,11 @@ import middleware_test2Img from "./assets/images/middleware_test2.jpg";
 import audio from "../../../assets/audio/in_the_end.mp3";
 
 <div><h1><strong>Express yourself with Node.js</strong></h1></div>
+
+<Language
+  currentLanguage="ru"
+  languages={{"ua": "lectures/express-yourself-with-nodejs/ua", "ru": "lectures/express-yourself-with-nodejs"}
+}/>
 
 <div>
   <div class="author">
@@ -737,11 +742,11 @@ server.listen(port, (err) => {
 
 Браузер всегда отправляет GET запрос на указанный URL и в дополнение запрашивает _favicon.ico_, потому что считает любой адрес страницей.
 
-    <img src={get_serverImg} alt="get_server" />
+  <img src={get_serverImg} alt="get_server" />
 
 Логи сервера, которые мы получаем благодаря функции `requestHandler()`
 
-    <img src={get_server_logImg} alt="get_server_log" />
+  <img src={get_server_logImg} alt="get_server_log" />
   </div>
 </div>
 
@@ -1172,7 +1177,7 @@ module.exports = router;
 5) Запускаем сервер `npm start`  
 6) Отправляем POST-запрос на _/users_ и смотрим на ответ, содержащий переданное имя
 
-  <img src={service_testImg} alt="service_test" /> ./assets/images/service_test.jpg
+  <img src={service_testImg} alt="service_test" />
   </div>
 </div>
 

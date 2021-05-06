@@ -1,0 +1,1426 @@
+import { Lecture, SlackMessage, TimelineOfContents, Level, ThatsAllFolks, VideoWrapper, Accordion, RadarChart, Language } from "../../../../components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlobe, faQuestionCircle } from "@fortawesome/pro-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/pro-regular-svg-icons";
+import { faGithub, faStackOverflow } from "@fortawesome/free-brands-svg-icons";
+import { alexandrTovmach2018Avatar } from "../../../../assets/images/avatars/intro-rounded";
+/* Images */
+import npmLogoImage from "../assets/images/npm.svg";
+import yarnLogoImage from "../assets/images/yarn.svg";
+import microservicesImage from "../assets/images/microservice.jpg";
+import networkImage from "../assets/images/network.jpg";
+import clientServerModelImage from "../assets/images/client-server-model.png";
+import serverRoomImage from "../assets/images/server-room.jpg";
+import nodeNpmVersionsImg from "../assets/images/node-npm-versions.jpg";
+import semverImg from "../assets/images/versions.jpg";
+import semverExtImg from "../assets/images/versions-extended.jpg";
+import server_startedImg from "../assets/images/server_started.jpg";
+import get_serverImg from "../assets/images/get_server.jpg";
+import get_server_logImg from "../assets/images/get_server_log.jpg";
+import postmanImg from "../assets/images/postman.jpg";
+import server_logsImg from "../assets/images/server_logs.jpg";
+import eventloopImg from "../assets/images/eventloop.jpg";
+import express_getImg from "../assets/images/express_get.jpg";
+import express_postImg from "../assets/images/express_post.jpg";
+import express_bodyImg from "../assets/images/express_body.jpg";
+import express_body_logImg from "../assets/images/express_body_log.jpg";
+import express_generator_versionImg from "../assets/images/express_generator_version.jpg";
+import express_generator_helpImg from "../assets/images/express_generator_help.jpg";
+import express_generatorImg from "../assets/images/express_generator.jpg";
+import express_generator_starterImg from "../assets/images/express_generator_starter.jpg";
+import service_testImg from "../assets/images/service_test.jpg";
+import repository_testImg from "../assets/images/repository_test.jpg";
+import middleware_test1Img from "../assets/images/middleware_test1.jpg";
+import middleware_test2Img from "../assets/images/middleware_test2.jpg";
+/* Audio */
+import audio from "../../../../assets/audio/in_the_end.mp3";
+
+<div><h1><strong>Express yourself with Node.js</strong></h1></div>
+
+<Language
+  currentLanguage="ua"
+  languages={{"ua": "lectures/express-yourself-with-nodejs/ua", "ru": "lectures/express-yourself-with-nodejs"}
+}/>
+
+
+<div>
+  <div class="author">
+    <div class="avatar-wrapper">
+      <object class="avatar-object" data={alexandrTovmach2018Avatar} role="img" aria-label="Alex profile picture"></object>
+    </div>
+    <div class="profile">
+      <h3 class="name">Олександр Товмач</h3>
+      <ul class="contacts">
+        <li>
+          <a href="https://ru.stackoverflow.com/users/312473/alexandr-tovmach?tab=profile" rel="author" class="facebook">
+            <FontAwesomeIcon icon={faStackOverflow} className="icon" />
+            <span>alexandr-tovmach</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/alexandrtovmach" rel="author" class="github">
+            <FontAwesomeIcon icon={faGithub} className="icon" />
+            <span>alexandrtovmach</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://alexandrtovmach.com/" rel="author" class="website">
+            <FontAwesomeIcon icon={faGlobe} className="icon" />
+            <span>https://alexandrtovmach.com</span>
+          </a>
+        </li>
+      </ul>
+      <p class="about">
+        Full-stack розробник з <a href="https://binary-studio.com"><strong>Binary Studio</strong></a> ― Олександр. 
+        На <a href="https://dou.ua/users/aleksandr-tovmach/articles/"><strong>DOU</strong></a> і <a href="https://habr.com/ru/users/alexandrtovmach/posts"><strong>Habr</strong></a> пише статті, на <a href="https://reactjs.org/"><strong>React</strong></a> и <a href="https://angular.io/"><strong>Angular</strong></a> пише код, на <a href="https://thumbs.dreamstime.com/b/computer-code-graffiti-abstract-white-brick-wall-52481211.jpg"><strong>стінах</strong></a> і <a href="https://translate.google.com.ua/?hl=ru#view=home&op=translate&sl=hi&tl=en&text=%E0%A4%85%E0%A4%97%E0%A4%B0%20(%E0%A4%B8%E0%A4%9A)%20%7B%0A%20%20%2F%2F%20%E0%A4%87%E0%A4%B8%20%E0%A4%95%E0%A5%8B%E0%A4%A1%20%E0%A4%95%E0%A5%8B%20%E0%A4%B9%E0%A4%B0%20%E0%A4%B8%E0%A4%AE%E0%A4%AF%20%E0%A4%9A%E0%A4%B2%E0%A4%BE%E0%A4%8F%E0%A4%82%0A%7D%20%E0%A4%B5%E0%A4%B0%E0%A4%A8%E0%A4%BE%20%7B%0A%20%20%2F%2F%20%E0%A4%87%E0%A4%B8%20%E0%A4%95%E0%A5%8B%E0%A4%A1%20%E0%A4%95%E0%A5%8B%20%E0%A4%95%E0%A4%AD%E0%A5%80%20%E0%A4%A8%20%E0%A4%9A%E0%A4%B2%E0%A4%BE%E0%A4%8F%E0%A4%82%0A%7D"><strong>хінді</strong></a> не пише нічого. Хоче змінити цей світ, але руки не доходять.</p>
+    </div>
+  </div>
+  <div class="bubble" style="margin: -0.5em 1em 1em;">
+    <strong>Вітаю!</strong><br />Згадуючи себе на місці студента, я намагався не навантажувати лекцію зайвою та <span class="tooltip" data-tooltip="теж запнувся коли читав це слово?"><u>важкозасвоюваною</u></span> інформацією, яка не знадобиться тобі у найближчі пару місяців. З іншого боку, розбиратися у деталях - це похвально. Тому для допитливих, я прикріпляю посилання на матеріали та статті. Лекція поділена на блоки, які максимально незалежні один від одного, тому якщо, прочитавши заголовок, ти розумієш що до чого, сміливо переходь до наступного блоку.<br />Хай щастить!
+  </div>
+</div>
+
+
+<div class="messages">
+  Ryu, залишившись дуже задоволеним онлайн-файтінгом, почав вихвалятися ним перед своїм друзям. Спочатку, гра викликала неабияку зацікавленність, проте не встиг Ryu почати перемови з Capcom, як ажіотаж зменшився. Всі відмітили, що персонажнів у грі дуже мало, а їх характеристики не відповідають дійсності. Через це грати стає нецікаво.<br/>
+  Засмучений Ryu знову звертається до розробників, щоб виправити ситуацію:
+</div>
+<SlackMessage
+  senderId="ryu"
+  senderName="Ryu"
+  senderAvatarUrl="http://fast1.onesite.com/capcom-unity.com/user/gregaman/blog_photos/9c9a08a03cfcdb05c7c03ddfaeddc041.png?v=57600"
+  reactions={[
+    { emoji: "👍", count: 42 }
+  ]}
+  replies={[
+    { name: "N/A", avatarUrl: "https://ca.slack-edge.com/T036H63TN-U0L5E8JG1-0179af4ceca2-24" }
+  ]}
+>
+  <p>Hi, I need to increase the number of characters in the fighting game. I also want to be able to change the properties of the players, their appearance, damage, vulnerability and names (because among us there are French who are offended when their name is spelled incorrectly)</p>
+</SlackMessage>
+
+Студент, розуміючи, що проста сторінка починає розростатися у серйозний додаток з бізнес-логікою та керуванням користувачами, а також не маючи змоги зберігати великі об'єми даних на клієнті, вирішує, що настав час backend'у.
+
+<SlackMessage
+  senderId="you"
+  senderName="You"
+  senderAvatarUrl="https://ca.slack-edge.com/T036H63TN-USLACKBOT-sv41d8cd98f0-64"
+  reactions={[
+    { emoji: "👍", count: 13 },
+    { emoji: "🏁", count: 8 },
+    { emoji: "🚀", count: 10 },
+    { emoji: "👏", count: 6 }
+  ]}
+  replies={[
+    { name: "N/A", avatarUrl: "https://ca.slack-edge.com/T036H63TN-U0L5E8JG1-0179af4ceca2-24" }
+  ]}
+>
+  Yes, I think we can implement all this using a server.
+</SlackMessage>
+
+І так як студент пише на JS, то і вибір технології стає очевидним ― Node.js. Залишилось зовсім трохи ― <span class="tooltip" data-tooltip='ну таааааак, саме "зовсім трохи"...'><u>вивчити цю технологію</u></span>.
+<hr />
+
+<div id="table-of-contents" class="table-of-contents">
+  <h2>
+    <strong>Робота з Node.js</strong>
+  </h2>
+  <TimelineOfContents
+    timeline={[{
+      linkTo: "#about-backend",
+      title: "Теорія"
+    }, {
+      linkTo: "#preparation",
+      title: "Підготовка"
+    }, {
+      linkTo: "#package-manager",
+      title: "Пакетні менеджери"
+    }, {
+      linkTo: "#basic-node-js",
+      title: "Основи Node.js"
+    }, {
+      linkTo: "#basic-express-js",
+      title: "Основи Express.js"
+    }, {
+      linkTo: "#first-project",
+      title: "Перший проект"
+    }, {
+      linkTo: "#finish",
+      title: "Висновок"
+    }]}
+  />
+</div>
+
+<Level
+  id="about-backend"
+  number="1"
+  name="Теорія"
+  difficulty="Як реклама на YouTube ― можна пропустити."
+  objectives="Зрозуміти, що таке сервер, де його місце у web і як з цим жити."
+/>
+
+<VideoWrapper duration="3 хв">
+  <iframe src="https://www.youtube.com/embed/8ZTQy-ezIwI?start=54&end=235" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+</VideoWrapper>
+
+<div class="details">
+  <input type="checkbox" id="accordion-1-1" />
+  <label class="summary" for="accordion-1-1">
+    <strong>Терміни</strong>
+  </label>
+  <div class="details-body">
+    <ul>
+      <li><a href="https://uk.wikipedia.org/wiki/%D0%9A%D0%BB%D1%96%D1%94%D0%BD%D1%82_(%D1%96%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0)"><strong>Клієнт</strong></a> ― це може бути браузер або будь-яке інше програмне забезпечення, що відправляє запити до серверу.</li>
+      <li>
+        <a href="https://uk.wikipedia.org/wiki/%D0%92%D0%B5%D0%B1%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80"><strong>Сервер</strong></a> ― це програма або її частина, що взаємодіє з клієнтом за принципом запит-відповідь на основі HTTP-протоколу, відправляючи необхідні дані або файли на клієнт.
+        <div class="bubble small subtle">
+          Коли web-розробник каже слово "сервер", він має на увазі "веб-сервер". Те ж саме стосується і "клієнту", "дотатку" і т.д.
+        </div>
+      </li>
+      <li><a href="https://uk.wikipedia.org/wiki/HTTP"><strong>HTTP-протокол</strong></a> ― набір правил передачі даних в інтернеті.</li>
+      <li><a href="https://ru.wikipedia.org/wiki/HTTP#%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B"><strong>HTTP-метод</strong></a> ― вказує на те, яку операцію необхідно виконати з даним ресурсом. До основних можна віднести <strong>GET</strong>, <strong>POST</strong>, <strong>PUT</strong>, <strong>DELETE</strong> ― їх трошки більше, але це базис, якого тобі вистачить на перший час.</li>
+      <li><a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_HTTP"><strong>HTTP-статус</strong></a> ― надходить разом із відповіддю з серверу і говорить про статус запитуваної операції. Найбільш часто використовуються: <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_HTTP#200"><strong>200</strong></a>, <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_HTTP#301"><strong>301</strong></a>, <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_HTTP#401"><strong>401</strong></a>, <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_HTTP#404"><strong>404</strong></a>, <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_HTTP#500"><strong>500</strong></a>.</li>
+    </ul>
+  </div>
+</div>
+<ol class="inverted">
+  <li>
+    <h5><strong>Web теорія</strong></h5>
+    Подивимось на прикладі, як же працює Web:
+    <ol>
+      <li><em>користувач відкрив браузер</em> / <strong>запустив клієнт</strong></li>
+      <li><em>користувач відкрив <a href="https://alexandrtovmach.com/images/preloader.svg">посилання</a></em> / <strong>по HTTP відправив GET запит на сервер</strong></li>
+      <li><em>сервер опрацював запит</em> / <strong>визначив, що запитується файл і знайшов його</strong></li>
+      <li>
+        <div class="details">
+          <label class="summary" for="accordion-1-2">
+            <em>сервер повернув файл</em> / <strong>по HTTP відправив відповідь зі статусом 200 і файлом на клієнт</strong>
+          </label>
+          <input type="checkbox" id="accordion-1-2" />
+          <div class="details-body">
+            <img src={networkImage} alt="" />
+          </div>
+        </div>
+      </li>
+    </ol>
+    <div class="bubble small subtle">
+      <a href="https://developer.mozilla.org/ru/docs/Learn/Getting_started_with_the_web/How_the_Web_works">Стаття "Як працює Веб"</a>
+    </div>
+    <div class="bubble small subtle">
+      Якщо ти пишеш на JS і вже зверстав свою першу HTML-сторінку - означає, що з клієнтом ти знайомий достатньо. Тут ми будемо розглядати роботу зі сторони серверу <em><s>(взагалі то ми розглядаємо сервер через те, що це як би тема лекції, але не важливо)</s></em>.
+    </div>
+  </li>
+  <li>
+    <h5><strong>Сервер ― "що?" і "навіщо?"</strong></h5>
+    <div class="details">
+      <input type="checkbox" id="accordion-1-3" />
+      <label class="summary" for="accordion-1-3">
+        <strong>Що</strong> таке сервер?
+      </label>
+      <div class="details-body">
+        Простими словами, коли користувач вводить запит до адресного рядку, браузер запитує дані на віддаленому комп'ютері (сервері) по HTTP. У відповідь він отримує файл або дані, для відображення їх у браузері.
+        <img src={clientServerModelImage} alt="" />
+      </div>
+    </div>
+    <div class="details">
+      <input type="checkbox" id="accordion-1-4" />
+      <label class="summary" for="accordion-1-4">
+        <strong>Навіщо</strong> потрібен сервер?
+      </label>
+      <div class="details-body">
+        Для збереження та обробки усіх ресурсів, що використовуються у вебі. Неважливо, будь то одинична статична сторінка або цілий Facebook, усе розташовано на віддалених серверах або хостінгах, і відображається користувачу тільки по його запиту.
+        <img src={serverRoomImage} alt="" />
+      </div>
+    </div>
+    <p>Сервер у сучасному вебі виконує множину функцій з обробки та збереженню інформації, працює зі статичними файлами та конфіденційними даними, до яких ніхто не повинен мати доступу, виконує ресурсовитратні розрахунки, які занадто важкі для клієнтської частини, і ще багато чого іншого. Тому у залежності від важкості проекту та вирішуваних задач, для комфортної роботи та збільшенню ККД, сервер буде будуватися за певною архітектурою: монолітною або мікросервісною.</p>
+    <div class="details">
+      <label class="summary" for="accordion-1-5">
+        <strong>Монолітна архітектура</strong> <em>vs</em> <strong>Мікросервісна архітектура</strong>
+      </label>
+      <input type="checkbox" id="accordion-1-5" />
+      <div class="details-body">
+        <img src={microservicesImage} alt="" />
+      </div>
+    </div>
+    <p><a href="https://en.wikipedia.org/wiki/Multitier_architecture"><strong>Монолітна архітектура</strong></a> — це модель, за якою будь-який запит буде опрацьований за одним і тим же шляхом, формуючи відповідь на основі проходження кріз шари логіки: юзер інтерфесу, бізнес логіки та шару даних. До основних недоліків цього підходу відносять слабку масштабованість та відмовостійкість.</p>
+    <p><a href="https://uk.wikipedia.org/wiki/%D0%9C%D1%96%D0%BA%D1%80%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D1%96%D1%81%D0%B8"><strong>Мікросервісна архітектура</strong></a> — за кожну операцію відповідає окремий сервіс. Авторизація, платіжні транзакції, логіка чату, заватаження медіа - все це розбивається на окремі сервіси. Цей підхід вирішує проблеми попередників, і вважається найкращим на сьогодняшній день. Тому ми будем прямувати за цією моделлю при роботі з Node.js.</p>
+  </li>
+  <li>
+    <h5><strong>Історія Node.js</strong></h5>
+    <div class="bubble small subtle">
+      Полюбляєш хоку?:
+      <blockquote>
+        <a href="https://twitter.com/ryanmdahl"><strong>Райан Даль</strong></a>,<br />
+        <a href="https://www.youtube.com/watch?v=ysSxxIqKNN0"><strong>2009 рік</strong></a>,<br />
+          іскра, буря, безумство — <a href="https://nodejs.org/"><strong>Node.js</strong></a>
+      </blockquote>
+    </div>
+    <p>Саме у 2009 році була опублікована перша версія Node.js. Після були <a href="https://blog.risingstack.com/history-of-node-js/">деякі перепетії з правами</a>, але нам це не так цікаво, як причини за яких Node.js був написаний саме під JavaScript:</p>
+    <div class="columns">
+      <div class="column col-4 col-xs-12">
+        <div className="panel">
+          <div className="panel-header">
+            <div className="panel-title">
+              <h6>
+                <strong>JavaScript — мова клієнта</strong>
+                <span className="text-gray"><small>#1</small></span>
+              </h6>
+            </div>
+          </div>
+          <div className="panel-body">
+            Як результат - велике ком'юніті, що бажає писати код на сервері, використовуючи вже знайому мову.
+          </div>
+        </div>
+      </div>
+      <div class="column col-4 col-xs-12">
+        <div className="panel">
+          <div className="panel-header">
+            <div className="panel-title">
+              <h6>
+                <strong>Event Loop</strong>
+                <span className="text-gray"><small>#2</small></span>
+              </h6>
+            </div>
+          </div>
+          <div className="panel-body">
+            JavaScript - це однопотокова мова, що означає, що усі операції, як синхронні так і асинхронні, відбуваються у єдиному потоці, який ніколи не блокується. Це і є основою відмовостійкості Node.js.
+          </div>
+        </div>
+      </div>
+      <div class="column col-4 col-xs-12">
+        <div className="panel">
+          <div className="panel-header">
+            <div className="panel-title">
+              <h6>
+                <strong>V8</strong>
+                <span className="text-gray"><small>#3</small></span>
+              </h6>
+            </div>
+          </div>
+          <div className="panel-body">
+            Двигун, розроблений командою Google Chrome, для поліпшення роботи JavaScript у їх браузері, який Райан Даль використовував для Node.js.
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>І зараз, завдяки усім цим факторам, ми можемо створювати повноцінні веб додатки, використовуючи JavaScript як на клієнті, так і на сервері.</p>
+  </li>
+</ol>
+
+<Level
+  id="preparation"
+  number="2"
+  name="Підготовка"
+  difficulty="Як встановлення Windows ― усе просто, але щось може піти не так."
+  objectives="Встановити Node.js на ПК"
+/>
+
+<VideoWrapper duration="1 хв 40 сек">
+  <iframe src="https://www.youtube.com/embed/8ZTQy-ezIwI?start=235&end=334" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+</VideoWrapper>
+
+Для того, щоб почати процес інсталяції, достатньо перейти на офіційний сайт [https://nodejs.org](https://nodejs.org), і завантажити інсталяційний файл для своєї операційної системі, далі слідувати інструкціям з інсталяції. Я не бачу сенсу розповідати повний процес інсталяції для усіх ОС, для цього дивіться офіційни туторіали, але хочу звернути увагу на типові проблеми при інсталяції.
+
+<div class="columns">
+  <div class="column col-4 col-xs-12">
+    <div className="panel">
+      <div className="panel-header">
+        <div className="panel-title">
+          <h6>
+            <strong>Після інсталяції обов'язково перезавантажте комп'ютер</strong>
+            <span>🖥️</span>
+          </h6>
+        </div>
+      </div>
+      <div className="panel-body">
+        Переважно винні змінні оточення, тому, саме для застовсування змін у них, необхідне перезаватаження. Це переважно стосується Windows
+      </div>
+    </div>
+  </div>
+  <div class="column col-4 col-xs-12">
+    <div className="panel">
+      <div className="panel-header">
+        <div className="panel-title">
+          <h6>
+            <strong>Недостатні права</strong>
+            <span>⚠️</span>
+          </h6>
+        </div>
+      </div>
+      <div className="panel-body">
+        Виконайте інсталяцію від імені Адміністратора
+      </div>
+    </div>
+  </div>
+  <div class="column col-4 col-xs-12">
+    <div className="panel">
+      <div className="panel-header">
+        <div className="panel-title">
+          <h6>
+            <strong>Неправильні змінні оточення</strong>
+            <span>🚧</span>
+          </h6>
+        </div>
+      </div>
+      <div className="panel-body">
+        Інсталятор повинен автоматично встановлювати шлях до стартового файлу Node.js, але інколи це не працює, і потрібно вносити ці шляхи самостійно. <a href="http://qaru.site/questions/219728/fixing-npm-path-in-windows-8-and-10">Як це зробити на Windows?</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="details">
+  <input type="checkbox" id="accordion-2-1" />
+  <label class="summary" for="accordion-2-1">
+    <strong>Для перевірки успішної інсталяції Node.js використовуйте термінал.</strong>
+  </label>
+  <div class="details-body">
+
+Введіть наступні команди:
+```shell
+# Вивести версію Node.js
+node -v
+
+# Вивести версію npm
+npm -v
+``` 
+  </div>
+</div>
+
+
+<div class="details">
+  <input type="checkbox" id="accordion-2-2" />
+  <label class="summary" for="accordion-2-2">
+    <strong>Якщо версія відображається - все встановлено і працює правильно.</strong>
+  </label>
+  <div class="details-body">
+
+  _твої версії можуть відрізнятися у більшу сторону_
+
+  <img src={nodeNpmVersionsImg} alt="nodeNpmVersions" />
+  </div>
+</div>
+
+
+Помітили **npm**? Ми ж його не встановлювали? Це пакетний менеджер, розроблений командою Node.js, і встановлюється у комплекті для зручної роботи з модулями. Ми гоговоримо про нього детальніше у наступному блоці, а зараз головне переконатися у його працездібності.
+
+<Level
+  id="package-manager"
+  number="3"
+  name="Пакетні менеджери"
+  difficulty="Як вчитися грати у карти ― зрозуміти і запам'ятати хто за що відповідає."
+  objectives="Розібратися у термінології та попрацювати з пакетaми за допомогою npm."
+/>
+
+<VideoWrapper duration="7 хм 20 сек">
+  <iframe src="https://www.youtube.com/embed/8ZTQy-ezIwI?start=335&end=774" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+</VideoWrapper>
+
+<div class="details">
+  <input type="checkbox" id="accordion-3-1" />
+  <label class="summary" for="accordion-3-1">
+    <strong>Терміни</strong>
+  </label>
+  <div class="details-body">
+
+
+- [Модулі (`modules`)](https://uk.wikipedia.org/wiki/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C%D0%BD%D0%B5_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F) — це частини програми/коду, винесені в окремі блоки для подальшого перевикористання.
+- [Пакети (`packages`)](https://uk.wikipedia.org/wiki/%D0%9F%D0%B0%D0%BA%D0%B5%D1%82_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE_%D0%B7%D0%B0%D0%B1%D0%B5%D0%B7%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%BD%D1%8F) — це збірник модулів.
+- [Пакетні менеджері](https://uk.wikipedia.org/wiki/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D0%BA%D0%B5%D1%80%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F_%D0%BF%D0%B0%D0%BA%D1%83%D0%BD%D0%BA%D0%B0%D0%BC%D0%B8) ― інструмент для інсталяції, видалення, оновлення, версіонування та валідації пакетів та модулів.
+
+
+  </div>
+</div>
+
+<br />
+
+<ol class="inverted">
+  <li>
+    <h5><strong>Що за "пакети" і навіщо їм потрібні "менеджери"?</strong></h5>
+
+<div class="details">
+  <input type="checkbox" id="accordion-3-2" />
+  <label class="summary" for="accordion-3-2">
+    <strong>Для пояснення того чим є пакет/модуль - розглянемо приклад.</strong>
+  </label>
+  <div class="details-body">
+
+_1. У свому проекті ти написав функцію для сортування масиву і перевикористовуєш її у декількох місцях._
+
+<div class="bubble small subtle">
+  Вітаю, це майже пакет/модуль
+</div>
+
+_2. У подальшому ти вирішив, що ця ж функція може допомогти тобі ще, тому публікуєш її на [StackOverflow як відповідь](https://stackoverflow.com/questions/1063007/how-to-sort-an-array-of-integers-correctly)._
+
+<div class="bubble small subtle">
+  Зараз твій пакет/модуль у відкритому доступі й інші розробники можуть просто взяти і скопіювати його.
+</div>
+
+_3. А що як твоє рішення більш масштабне і займає 400 рядків коду? 500 рядків? 1000?_
+
+<div class="bubble small subtle">
+
+  Не дуже й то і зручно копіювати такі об'єми руками ~~(хоча фронтедщики зі своїми jQuery-слайдерами посрепечаються)~~. 
+
+</div>
+
+_4. Тому краще правильно оформити свою функцію та опублікувати у віддалене сховище ― **npm**._
+
+<div class="bubble small subtle">
+
+  Тепер іншим програмістам достатньо знати тільки назву твого пакета/модуля і використати **npm**, щоб дотати його до себе у проект, видалити, якщо не сподобається, або оновити до наступної версії, якщо ти її зробиш.
+
+</div>
+
+> Ще раз - у чому різниця між `packages` і `modules`? Повірте, у цьому плутаються навіть досвідчені розробники, а різниця проста, `module` - це атом, `package` - це молекула. Іншими словами `package` складається з інших `modules`, які є наймешною одиницею, що вирішує одну задачу. Все максимально просто!
+
+  </div>
+</div>
+
+Буквально [декілька років назад](https://www.javascriptstuff.com/javascript-frontend-package-managers/) блок про пакетні менеджери міг зайняти час цілої лекції, в силу їх величезнох кількості, але станом на сьогодні ситуація стабілізувалася, і теперь для работи з JS у нас є 2 лідери:
+
+<div class="columns">
+  <div class="column col-6 col-xs-12">
+    <div className="panel">
+      <div className="panel-header">
+        <div className="panel-title">
+          <h6>
+            <strong>npm</strong>
+            <span className="text-gray"><small>кращий</small></span>
+          </h6>
+        </div>
+      </div>
+      <div className="panel-body">
+        <a href="https://www.npmjs.com"><img src={npmLogoImage} /></a>
+        Основні інструменти розробки JavaScript, які допоможуть вам швидше вийти на ринок і створювати потужні додатки з використанням сучасного відкритого source коду.
+      </div>
+    </div>
+  </div>
+  <div class="column col-6 col-xs-12">
+    <div className="panel">
+      <div className="panel-header">
+        <div className="panel-title">
+          <h6>
+            <strong>yarn</strong>
+            <span className="text-gray"><small>зручний</small></span>
+          </h6>
+        </div>
+      </div>
+      <div className="panel-body">
+        <a href="https://yarnpkg.com"><img src={yarnLogoImage} /></a>
+        Швидке, надійне й безпечне управління залежностями.
+      </div>
+    </div>
+  </div>
+</div>
+
+В **yarn** доступні усі пакети з **npm**, тому що вони мають єдиний реєстр даних на двох, і створений він був тільки для того, щоб поліпшити роботу **npm**. Фактичної різниці між ними немає, крім суб'єктивних забобонів у фанатів конкретного інструмента. У майбутньому ви зможете самостійно вирішити з чим вам зручніше працювати, а сьогодні ми будемо говорити про **npm**, через його прив'язанність до Node.js. 
+
+<div class="bubble small subtle">
+
+  [Стаття "yarn або npm: все, що вам потрібно знати"](http://prgssr.ru/development/yarn-ili-npm-vse-chto-vam-nuzhno-znat.html)
+  
+</div>
+  </li>
+  <li>
+    <h5><strong>Робота з npm</strong></h5>
+
+Щоб дізнатися повний список команд доступних для **npm**, можна ~~і потрібно~~ почитати [документацію](https://docs.npmjs.com/cli-documentation/), я наведу в лекції базовий мінімум:
+
+```shell
+
+# ініціалізація проекту
+npm init
+
+# інсталяція пакету
+npm install package-name
+
+# інсталяція пакету тільки для розробки
+npm install package-name --save-dev
+
+# видалення пакету
+npm uninstall package-name
+
+# інсталяція пакету конкретної версії
+npm install package-name@version
+
+```
+
+  </li>
+  <li>
+    <h5><strong>Версіонування</strong></h5>
+
+Існує набір правил версіонування, описаний на [сайті semver.org](https://semver.org) відповідно до якого номер версії складається з трьох чисел розділених точками.
+
+<div class="details">
+  <input type="checkbox" id="accordion-3-3" />
+  <label class="summary" for="accordion-3-3">
+    <strong>Стандарт</strong>
+  </label>
+  <div class="details-body">
+    <img src={semverImg} alt="semver" />
+
+**Мажорна версія** ― відповідає за реліз зворотньо несумістного оновлення API. Іншими словами, зміною мажорної версії можна назвати появу абсолютно нового продукту.
+
+**Мінорна версія** ― збільшується при розширенні існуючого функціоналу зі збереженням зворотньої сумістності.
+
+**Патч або фікс версія** ― змінюється коли до коду додаються незначні зміни або фікси, що не додають функцоналу і не ламать сумістність.
+
+  </div>
+</div>
+
+<div class="details">
+  <input type="checkbox" id="accordion-3-4" />
+  <label class="summary" for="accordion-3-4">
+    <strong>Розширений стандарт</strong>
+  </label>
+  <div class="details-body">
+    <img src={semverExtImg} alt="semverExt" />
+
+**Мажорна версія** ― відповідає за реліз зворотньо несумістного оновлення API. Іншими словами, зміною мажорної версії можна назвати появу абсолютно нового продукту.
+
+**Мінорна версія** ― збільшується при розширенні існуючого функціоналу зі збереженням зворотньої сумістності.
+
+**Патч або фікс версія** ― змінюється коли до коду додаються незначні зміни або фікси, що не додають функцоналу і не ламать сумістність.
+
+**Мітки** ― створені для маркування перед-релізних версій або цілей для тестування. Вказуються через дефіс після основого номеру версії та можуть містити літери, слова, крапки і числа.
+
+  </div>
+</div>
+
+Керувати версіями пакетів у нашому проекті ми можемо декількома способами:
+
+- змінити номер версії для пакету у файлі _package.json_, а потім перевстановити усі пакети командою `npm install`
+- інсталювати пакет конкретної версії `npm install package-name@version`
+- інсталювати пакет останньої версії `npm install package-name@latest`
+
+У завершення хотілось би пояснити навіщо придумали "пакетні менеджери", адже ми могли би додавати код руками прямо до проекту без будь-яких проблем:
+
+<div class="columns">
+  <div class="column col-4 col-xs-12">
+    <div className="panel">
+      <div className="panel-header">
+        <div className="panel-title">
+          <h6>
+            <strong>Зручніть</strong>
+            <span className="text-gray"><small>#1</small></span>
+          </h6>
+        </div>
+      </div>
+      <div className="panel-body">
+        Замість копіювання коду руками, для цього є зручний інструмент.
+      </div>
+    </div>
+  </div>
+  <div class="column col-4 col-xs-12">
+    <div className="panel">
+      <div className="panel-header">
+        <div className="panel-title">
+          <h6>
+            <strong>Пам'ять</strong>
+            <span className="text-gray"><small>#2</small></span>
+          </h6>
+        </div>
+      </div>
+      <div className="panel-body">
+        Якщо би ми зберігали код усіх залежностей разом із кодом проекту, то це значно збільшило б його об'єм, що ускладнило б передачу й обмін даними всередині команди під час розробки
+      </div>
+    </div>
+  </div>
+  <div class="column col-4 col-xs-12">
+    <div className="panel">
+      <div className="panel-header">
+        <div className="panel-title">
+          <h6>
+            <strong>Вирішення конфліктів</strong>
+            <span className="text-gray"><small>#3</small></span>
+          </h6>
+        </div>
+      </div>
+      <div className="panel-body">
+        У зв'язку з величезним різноманіттям пакетів, вони можуть конфліктувати між собою, менеджери беруть ці проблеми на себе.
+      </div>
+    </div>
+  </div>
+  <div class="column col-4 col-xs-12">
+    <div className="panel">
+      <div className="panel-header">
+        <div className="panel-title">
+          <h6>
+            <strong>Оптимізація</strong>
+            <span className="text-gray"><small>#4</small></span>
+          </h6>
+        </div>
+      </div>
+      <div className="panel-body">
+        Пакет <b>Х</b> може залежити від пакета <i><b>А</b></i> і пакет <b>Y</b> може залежити від пакета <i><b>А</b></i>. Якщо би ми додавали пакети <b>X</b> і <b>Y</b> до проекту руками, то у нас був би дублікат пакету <i><b>А</b></i>. Менеджери розв'язуються питання дублікатів та оптимізують кількість встановлених залежностей.
+      </div>
+    </div>
+  </div>
+  <div class="column col-4 col-xs-12">
+    <div className="panel">
+      <div className="panel-header">
+        <div className="panel-title">
+          <h6>
+            <strong>Кросплатформеність</strong>
+            <span className="text-gray"><small>#5</small></span>
+          </h6>
+        </div>
+      </div>
+      <div className="panel-body">
+        Для роботи на різних платформах можуть знадобитись різні пакети або їх аналоги, і менеджери можуть надати довідку рекомендацій.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  </li>
+</ol>
+
+<Level
+  id="basic-node-js"
+  number="4"
+  name="Основи Node.js"
+  difficulty="Як правила з бейсболу ― нічого не зрозумів, але дуже цікаво."
+  objectives="За допомогою пакетів Node.js запустити базовий HTTP-сервер і розібратися з eventloop."
+/>
+
+<VideoWrapper duration="5 хв 20 сек">
+  <iframe src="https://www.youtube.com/embed/8ZTQy-ezIwI?start=774&end=1095" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+</VideoWrapper>
+
+**Node.js** - це середовище виконання для **JavaScript**, і ми можем запускати будь-які скрипти у ньому. Все будет працювати <span class="tooltip" data-tooltip='"майже", тому що спільного в них тільки V8'><u>майже як у браузері</u></span>, тому перехід с фронтенду на бекенд повинен бути <span class="tooltip" data-tooltip='якщо порівнювати з вивчанням нової мови'><u>максимально комфортним</u></span>.
+
+Для переходу у середовище потрібно виконати команду `node` у терминалі, потім написати будь-які команди на JS. Але очевидно, що цей метод не найзручніший і краще писати код у файлах, які у подальшому можна запускати командою`node назва_файлу.js`.  
+
+Час експериментів! Ми вже знаємо як використовувати всю потужність JS з <span class="tooltip" data-tooltip='так розробники називають Node.js'><u>нодами</u></span> і це круто, але ми вже хочемо писати сервери. Відкриємо [офіційну документацію](https://nodejs.org/api/), щоб дізнатися список пакетів, що йдуть у комплекті з **Node.js**, і те, як з ними працювати. Як ми бачимо, пакетів дуже багато, але для початку нам потрібен лише один - [http](https://nodejs.org/api/http.html), який відповідає за роботу з мережею на основі HTTP. З опису ми розуміємо, що методів у нього багато і розглядувати кожен новачку просто немає змісту, замість цього давайте напишемо практичний приклад запуску HTTP-серверу: 
+```js
+/* index.js */
+
+// імпорт модуля "http"
+const http = require('http');
+const port = 3000;
+
+// коллбек на кожен HTTP-запит
+const requestHandler = (request, response) => {
+    console.log(request.url)
+    console.log(request)
+    response.end('Ping-Pong')
+};
+
+// створення HTTP-серверу
+const server = http.createServer(requestHandler);
+
+// початок прослуховування HTTP-сервера
+server.listen(port, (err) => {
+    if (err) {
+        return console.log('Помилочка вийшла', err)
+    }
+    console.log(`Сервер запущен по адресу http://localhost:${port}`)
+});
+```
+
+<div class="details">
+  <input type="checkbox" id="accordion-4-1" />
+  <label class="summary" for="accordion-4-1">
+    <strong>Запускаємо файл</strong>
+  </label>
+  <div class="details-body">
+    <img src={server_startedImg} alt="server_started" />
+  </div>
+</div>
+
+<div class="details">
+  <input type="checkbox" id="accordion-4-2" />
+  <label class="summary" for="accordion-4-2">
+    <strong>Перевірка серверу через браузер</strong>
+  </label>
+  <div class="details-body">
+
+Браузер завжди відправляє GET запит на вказанний URL і в доповнення запитує _favicon.ico_, тому що вважає будь-яку адресу сторінкою. 
+
+  <img src={get_serverImg} alt="get_server" />
+
+Логи серверу, які ми отримуємо завдяки функції `requestHandler()`
+
+  <img src={get_server_logImg} alt="get_server_log" />
+  </div>
+</div>
+
+<div class="details">
+  <input type="checkbox" id="accordion-4-3" />
+  <label class="summary" for="accordion-4-3">
+    <strong>Перевіряємо сервер за допомогою Postman</strong>
+  </label>
+  <div class="details-body">
+
+~~На правах реклами~~ представляю [Postman](https://www.getpostman.com/) ― інструмент для зручної відправки HTTP-запитів на сервер. За його допомогою ми можемо легко змінювати URL, методи, заголовки та тіло запиту.
+
+  <img src={postmanImg} alt="postman" />
+  <div class="bubble small subtle">
+
+  [Стаття "Введення в Postman"](https://habr.com/ru/company/kolesa/blog/351250/)
+    
+  </div>
+
+  </div>
+</div>
+
+Ми зробили працюючий сервер! Ура! Він дуже простий і не розуміє різницю між GEt та POST запитом, не знає як працювати з тілом запиту і багато чого іншого, але він же перший, і ми ❤️ його просто за це, так? Давайте навчимо сервер зберігати всі логи у файл, а також розглянемо ще один пакет [fs](https://nodejs.org/api/fs.html), призначений для роботи з файловою системою: 
+
+```js
+/* index.js */
+
+// імпорт модуля "http"
+const http = require('http');
+// імпорт модуля "fs"
+const fs = require('fs');
+const port = 3000;
+
+// створення потоку для запису у файл
+const logFile = fs.createWriteStream('log.txt', { flags: 'a' });
+
+// коллбек на кожен HTTP-запит
+const requestHandler = (request, response) => {
+    console.log(request.url);
+    // запис до файлу
+    logFile.write(`Запрос по адресу: ${request.url}\n`);
+    response.end('Ping-Pong')
+};
+
+// створення HTTP-серверу
+const server = http.createServer(requestHandler);
+
+// початок прослуховування HTTP-сервера
+server.listen(port, (err) => {
+    if (err) {
+        return console.log('Ошибочка вышла', err)
+    }
+    console.log(`Сервер запущен по адресу http://localhost:${port}`)
+});
+```
+
+<div class="details">
+  <input type="checkbox" id="accordion-4-4" />
+  <label class="summary" for="accordion-4-4">
+    <strong>Після завершення декількох запитів подивимось у файл <i>log.txt</i></strong>
+  </label>
+  <div class="details-body">
+    <img src={server_logsImg} alt="server_logs" />
+  </div>
+</div>
+
+А що буде, якщо запис до файлу ще не закінчений, а на сервер прийде інший запит? Забігаючи наперед, скажу що операції роботи з файловою системою є асинхроними потоками(stream) і вважаючи однопотоковість JS вони повинні блокувати сервер до завершення. Але це не так, і ми можемо переконатися у цьому бомбардуючи сервер запитами, а він не відмовить і навіть не затримає жоден з них. 
+<div class="bubble small subtle">
+
+  [Стаття "Потоки (Stream) в NodeJS — річки, в які ввійдеш двічі"](https://habr.com/ru/company/zerotech/blog/339900/)
+    
+</div>
+
+
+<div class="details">
+  <input type="checkbox" id="accordion-4-5" />
+  <label class="summary" for="accordion-4-5">
+    <strong>В чому ж справа? І тут ми повинні нарешті розібратися у тому, як реалізований eventloop у нодах</strong>
+  </label>
+  <div class="details-body">
+
+Кільце в центрі - це одиничний потік JS і він завжди виконує тільки одну операцію. Зліва ми бачимо чергу запитів, очікуючих свого виконання. При попаданні у потік синхроного запиту, він починає опрацьовуватися і по завершенню дає старт наступному запиту. У випадках, коли запит викликає асинхроні операції, він делегується бібліотеці [libuv](https://github.com/libuv/libuv), яка опрацьовує його в окремому потоці, а по завершенню, викликає коллбек у ту ж саму чергу запитів. 
+
+  <img src={eventloopImg} alt="eventloop" />
+  <div class="bubble small subtle">
+
+  Я намагався пояснити як можна простіше, але не впевнений що цього достатьньо, тому ось більш детальна стаття ["Як працює eventloop у Node.js"](https://frontender.info/understanding-the-node-js-event-loop/)
+      
+  </div>
+  </div>
+</div>
+
+
+Знижуємо висоту і повертаємось до нашого коду. Для виконуваних ним операцій він виглядає занадто громіздким, тому що оперує занадто [низькорівневими](https://uk.wikipedia.org/wiki/%D0%9D%D0%B8%D0%B7%D1%8C%D0%BA%D0%BE%D1%80%D1%96%D0%B2%D0%BD%D0%B5%D0%B2%D0%B0_%D0%BC%D0%BE%D0%B2%D0%B0_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F) операціями. Про те, як перейти на більш [високий рівень](https://uk.wikipedia.org/wiki/%D0%9C%D0%BE%D0%B2%D0%B0_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F_%D0%B2%D0%B8%D1%81%D0%BE%D0%BA%D0%BE%D0%B3%D0%BE_%D1%80%D1%96%D0%B2%D0%BD%D1%8F) абстракцій за допомогою Express.js ми говоримо у наступному блоці. 
+
+<div class="bubble small subtle">
+
+  [Репозиторій з кодом цього блоку](https://github.com/binary-studio-academy/stage-2-express-yourself-with-nodejs/tree/nodejs-basics)
+
+</div>
+
+<br />
+
+<Level
+  id="basic-express-js"
+  number="5"
+  name="Основи Express.js"
+  difficulty="Як рівень в SuperMario 🍄 ― щоб пройти потрібно декілька раз програти."
+  objectives="Встановити Express.js і запустити з його допомогою HTTP-сервер."
+/>
+
+<VideoWrapper duration="3 хв 25 сек">
+  <iframe src="https://www.youtube.com/embed/8ZTQy-ezIwI?start=1095&end=1300" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+</VideoWrapper>
+
+**Express.js** - це пакет, що надає множину можливостей, що спрощують життя при розробці на **Node.js**. З його допомогою підвищується рівень абстракції і нам не потрібно займатися налаштуванням мережевого з'єднання, парсити заголовки, методи та тіло запиту, і ще багато чого іншого. Для початку давайте встановимо [його](https://www.npmjs.com/package/express) в проект за допомогою **npm**. 
+
+```shell
+npm i express
+```
+
+Створимо новий файл і напишемо в ньому код для базового HTTP-сервера:
+
+```js
+/* express.js */
+
+// імпорт express
+var express = require('express')
+// ініціализація express-додатку
+var app = express()
+
+// створення функції слухача для GET-запитів за адресою "/"
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
+
+// створення функції слухача для POST-запитів за адресою "/test"
+app.post('/test', function (req, res) {
+  res.send('Hello World POST')
+})
+
+// ввімкнення серверу
+app.listen(3000)
+```
+
+<div class="details">
+  <input type="checkbox" id="accordion-5-1" />
+  <label class="summary" for="accordion-5-1">
+    <strong>Запустимо і перевіримо його роботу</strong>
+  </label>
+  <div class="details-body">
+
+```shell
+node express.js
+```
+
+<img src={express_getImg} alt="express_get" />
+<img src={express_postImg} alt="express_post" />
+  </div>
+</div>
+
+Все працює! Якщо спробувати відправляти запити неописані у коді (наприклад **GET**: _/users_), то ми будем отримувати у відповідь 404-сторінку. Для того, щоб написали щось подібне на нодах, нам би було необхідно приблизно 200 рядків коду. Вражає? Рухаємось далі. 
+
+**Express.js** розширює звичні об'єкти [request](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_clientrequest) та [response](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_serverresponse) з ноди, додаючи велику кількість корисних штук прямо з коробки. Наприклад, він парсить _query-параметри_ в об'єкт і може брати частини URL як параметри. У _response_ з'являються зручні методи для відповіді: 
+
+```js
+app.get('/:value', function (req, res) {
+  console.log(req.query); // об'єкт query-параметрів
+  console.log(req.params.value); // значення value, що знаходиться у URL, на вказанній позиції '/:value'
+  res.status(200).json({ message: 'Hello World' }); // метод "status()", встановлює статус код для відповіді, а "json()" поставить заголовки Content-Type для формату JSON
+})
+```
+
+5 рядків, а скільки користі! Цим і підкорив Express.js світову славу. На цей момент для express нараховується величезна кількість npm-пакетів, покликаних розв'язувати різноманітні кейси. Давайте розглянемо один з таких - парсинг тіла запиту. Для цього додамо пакет (офіційно визнаний Best Practice) [body-parser](https://www.npmjs.com/package/body-parser). 
+
+<div class="details">
+  <input type="checkbox" id="accordion-5-2" />
+  <label class="summary" for="accordion-5-2">
+    <strong>Встановимо і впровадимо <b>body-parser</b></strong>
+  </label>
+  <div class="details-body">
+
+```shell
+npm i body-parser
+```
+
+```js
+/* express.js */
+
+// імпорт express
+var express = require('express')
+// імпорт body-parser
+var bodyParser = require('body-parser');
+// ініціализація express-приложения
+var app = express()
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
+// створення функції слухача для GET-запитів за адресою "/"
+app.get('/', function (req, res) {
+  console.log(req.query);
+  console.log(req.params);
+  res.send('Hello World')
+})
+
+// створення функції слухача для POST-запитів за адресою "/test"
+app.post('/test', function (req, res) {
+  console.log(req.body);
+  res.send(`Hello World ${req.body.name}`)
+})
+
+// ввімкнення серверу
+app.listen(3000)
+```
+
+```shell
+node express.js
+```
+
+Відправляємо POST-запит, з тілом:
+
+<img src={express_bodyImg} alt="express_body" />
+
+Дивимось логи:
+
+<img src={express_body_logImg} alt="express_body_log" />
+  </div>
+</div>
+
+Це достатня основа в **Express.js** для новачка, далі ми можемо подивитися на те як масштабується весь цей код в реальному житті. 
+
+<div class="bubble small subtle">
+
+  [Репозиторій з кодом цього блоку](https://github.com/binary-studio-academy/stage-2-express-yourself-with-nodejs/tree/expressjs-basics)
+
+</div>
+
+<br />
+
+<Level
+  id="first-project"
+  number="6"
+  name="Проект"
+  difficulty="Як наблюдати за малюючим художником ― поки дивишся прикольно."
+  objectives="Зрозуміти структуру типового проекту на Node.js/Express.js"
+/>
+
+<VideoWrapper duration="6 хв 40 сек">
+  <iframe src="https://www.youtube.com/embed/8ZTQy-ezIwI?start=1301&end=1698" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+</VideoWrapper>
+
+Самий сік 🍎. Тут ми поговоримо про структуру проекту, що, де, куди й чому. У своїй практиці, для швидкого старту проекту, я зазвичай використовую [express-generator](https://www.npmjs.com/package/express-generator), який створений командою Express і створює шаблонний стартер на **Express.js**. Він встановлюється на машину глобально, щоб бути доступним у будь-якому місці і проекті. Для цього до команді інсталяції потрібно додати флаг `-g`: 
+
+```shell
+npm i express-generator -g
+```
+
+<div class="details">
+  <input type="checkbox" id="accordion-6-1" />
+  <label class="summary" for="accordion-6-1">
+    <strong>Після успішної інсталяції можна перевірити його працездатність класичним методом - дізнатися версію або викликати довідку 🙃</strong>
+  </label>
+  <div class="details-body">
+
+Версія:
+
+<img src={express_generator_versionImg} alt="express_generator_version" />
+
+Довідка:
+
+<img src={express_generator_helpImg} alt="express_generator_help" />
+
+  </div>
+</div>
+
+
+
+<div class="details">
+  <input type="checkbox" id="accordion-6-2" />
+  <label class="summary" for="accordion-6-2">
+    <strong>Ну і тепер згенеруємо проект без підтримки шаблонів і з файлом .gitignore</strong>
+  </label>
+  <div class="details-body">
+    <img src={express_generatorImg} alt="express_generator" />
+  </div>
+</div>
+
+<div class="details">
+  <input type="checkbox" id="accordion-6-3" />
+  <label class="summary" for="accordion-6-3">
+    <strong>Подивимось що вийшло?</strong>
+  </label>
+  <div class="details-body">
+    <img src={express_generator_starterImg} alt="express_generator_starter" />
+  </div>
+</div>
+
+Зверніть увагу на поле  `scripts`, у _package.json_, в ньому містяться npm-скрипти для роботи з додатком. Для того щоб запустити сервер нам необхідно буде використовувати команду `npm start`. 
+
+<div class="bubble small subtle">
+
+  Стаття ["Автоматизація задач за допомогою npm run"](https://frontender.info/task_automation_with_npm_run/)
+    
+</div>
+
+
+<div class="details">
+  <input type="checkbox" id="accordion-6-4" />
+  <label class="summary" for="accordion-6-4">
+    <strong>Для найпростішого API-серверу нам не потрібна папка <i>/public</i> та ініціализація рендеру шаблонів, тому ми їх просто видаляємо.</strong>
+  </label>
+  <div class="details-body">
+
+1) видаляємо папку _/public_ з усім вмістом  
+2) вносимо зміни у _/routes/index.js_  
+```js
+/* /routes/index.js */
+
+var express = require('express');
+var router = express.Router();
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.send('Express');
+});
+
+module.exports = router;
+```
+
+3) вносимо зміни в _app.js_  
+
+```js
+/* app.js */
+
+var express = require('express');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+
+var app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+module.exports = app;
+
+```
+
+  </div>
+</div>
+
+
+Зараз у нашому проекті реалізований тільки один шар **routes**, який повинен відповідати **ТІЛЬКИ** за роботу з HTTP-запитами. 
+
+<div class="bubble small subtle">
+
+Чому так радикально? _... повинен відповідати **ТІЛЬКИ** за роботу ..._. Грамотне розділення додатку за шарами - це запорука коду, який буде легко підтримувати за рахунок зручності роботи та зрозумілої структури. Якщо шар працює тільки з HTTP-запитами, то у ньому не повинно бути ніякої бізнес-логіки або обробки даних і навпаки. 
+
+</div>
+
+Давайте зробимо наш сервер розумним і подаруємо йому <span class="tooltip" data-tooltip="🕵️ 007 🔫"><u>логіку, бізнес-логіку</u></span>. У світі Express-додатків за них повинен відповідати шар, що називається **services**, і, оскільки, він не генерується автоматично, ми створимо його самі. 
+
+
+<div class="details">
+  <input type="checkbox" id="accordion-6-5" />
+  <label class="summary" for="accordion-6-5">
+    <strong>Створення і тестування шару services</strong>
+  </label>
+  <div class="details-body">
+
+
+1) Створюємо папку _/services_  
+2) Створюємо файл _/services/user.service.js_  
+3) Додаємо функцію у файл та експортуємо її:
+```js
+/* services/user.service.js */
+
+const getName = (user) => {
+  if (user) {
+    return user.name;
+  } else {
+    return null;
+  }
+};
+
+module.exports = {
+  getName
+};
+```
+4) Імпортуємо функцію з сервіса до роутера, використовуємо її для отримання імені.
+```js
+/* routes/users.js */
+
+var express = require('express');
+var router = express.Router();
+
+const { getName } = require("../services/user.service");
+
+router.get('/', function(req, res, next) {
+  res.send(`Welcome!`);
+});
+
+router.post('/', function(req, res, next) {
+  const result = getName(req.body);
+
+  if (result) {
+    res.send(`Your name is ${result}`);
+  } else {
+    res.status(400).send(`Some error`);
+  }
+});
+
+module.exports = router;
+```
+5) Запускаємм сервер `npm start`  
+6) Відправляємо POST-запит на _/users_ і дивимось на відповідь, що містить передане им'я
+
+  <img src={service_testImg} alt="service_test" />
+  </div>
+</div>
+
+Сервер вміє щось робити, а що як ми хочему зберігати дані? Для цього існує шар **repositories**, і ми його зараз реалізуємо.
+
+<div class="details">
+  <input type="checkbox" id="accordion-6-6" />
+  <label class="summary" for="accordion-6-6">
+    <strong>Створення і тестування шару repositories</strong>
+  </label>
+  <div class="details-body">
+
+
+1) Створюємо папку _/repositories_  
+2) Створюємо файл _/repositories/user.repository.js_  
+3) Додаємо функцію у файл та експортуємо її:
+
+```js
+/* repositories/user.repository.js */
+
+const saveData = (data) => {
+  // код для збереження даних у БД
+  if (data) {
+    console.log(`${data} is saved`);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+module.exports = {
+  saveData
+};
+```
+
+<div class="bubble small subtle">
+
+  Ми не розглядаємо Бази Даних у цій лекції, тому наш код є лише імітацією роботи з нею, насправді в цьому шарі повинна відбуватися вся робота з даними: їх отримання зі сховища, запис та оновлення. 
+
+</div>
+
+4) Імпортуємо функцію із репозиторія у сервіс та додаємо функцію `saveName()`:
+```js
+/* services/user.service.js */
+const { saveData } = require("../repositories/user.repository");
+
+const getName = (user) => {
+  if (user) {
+    return user.name;
+  } else {
+    return null;
+  }
+};
+
+const saveName = (user) => {
+  if (user) {
+    return saveData(user.name);
+  } else {
+    return null;
+  }
+};
+
+module.exports = {
+  getName,
+  saveName
+};
+```
+
+5) Імпортуємо функцію з сервіса в роутер та використовуємо її для роботи з тілом запиту:
+```js
+/* routes/users.js */
+var express = require('express');
+var router = express.Router();
+
+const { saveName } = require("../services/user.service");
+
+router.get('/', function(req, res, next) {
+  res.send(`Welcome!`);
+});
+
+router.post('/', function(req, res, next) {
+  const result = saveName(req.body);
+
+  if (result) {
+    res.send(`Name is saved ― ${result}`);
+  } else {
+    res.status(400).send(`Some error`);
+  }
+});
+
+module.exports = router;
+```
+6) Запускаємо сервер `npm start`  
+7) Надсилаємо POST-запит на _/users_ і дивимось на відповідь "Name is saved ― true", тому що функція з репозиторія повернула таке значення
+
+  <img src={repository_testImg} alt="repository_test" />
+  </div>
+</div>
+
+І останній шар - це **middlewares**, приклади якого ми вже бачили в цьому проекті. Давайте розберемося як він влаштований і що він робить.
+
+<div class="details">
+  <input type="checkbox" id="accordion-6-7" />
+  <label class="summary" for="accordion-6-7">
+    <strong>Створення і тестування шару middlewares</strong>
+  </label>
+  <div class="details-body">
+
+
+1) Створюємо папку _/middlewares_  
+2) Створюємо файл _/middlewares/auth.middleware.js_  
+3) Додаємо функцію у файл та експортуємо її:
+
+```js
+/* middlewares/auth.middleware.js */
+
+const isAuthorized = (req, res, next) => {
+  if (
+    req &&
+    req.headers &&
+    req.headers.authorization &&
+    req.headers.authorization === 'admin'
+  ) {
+    next();
+  } else {
+    res.status(401).send()
+  }
+};
+
+module.exports = {
+  isAuthorized
+}
+```
+
+
+<div class="bubble small subtle">
+
+  **middlewares** — виконують операції з даними, що проходять крізь них та відправляються їх далі, або переривають потік. Функція middleware приймає три аргументи: (req, res, next). З першими двому ми вже знайомі - це об'єкти запиту та відповіді, а третій - це функція коллбек, яка говорить, що усі поточні операції закінчені і можна переходити до наступного кроку. 
+
+</div>
+
+
+4) Імпортуємо мідлвер до роутеру і використовуємо його для роботи з тілом запиту:
+```js
+/* routes/users.js */
+
+var express = require('express');
+var router = express.Router();
+
+const { saveName } = require("../services/user.service");
+const { isAuthorized } = require("../middlewares/auth.middleware");
+
+router.get('/', function(req, res, next) {
+  res.send(`Welcome!`);
+});
+
+router.post('/', isAuthorized, function(req, res, next) {
+  const result = saveName(req.body);
+
+  if (result) {
+    res.send(`Your name is ${result}`);
+  } else {
+    res.status(400).send(`Some error`);
+  }
+});
+
+module.exports = router;
+
+```
+
+<div class="bubble small subtle">
+
+  Щоб ініціалізувати **middleware** можна використовувати `app.use` синтаксис, або ж у випадку з роутінгом просто передати його другим аргументом. 
+
+</div>
+
+5) Запускаємо сервер `npm start`  
+6) Відправляємо POST-запит на _/users_ з заголовком `Authorization: user` і дивимось на відповідь 401
+
+  <img src={middleware_test1Img} alt="middleware_test1" />
+
+7) Відправляємо POST-запит на _/users_ с заголовком `Authorization: admin` і отримуємо відповідь, тому що ми пройшли перевірку
+
+  <img src={middleware_test2Img} alt="middleware_test2" />
+  </div>
+</div>
+
+І це все, що стосується основ у структурі Express-додатку. Наостанок хотів би звернути вашу увагу на те, що в кожному з шарів написані `if..else` блоки для перехоплення помилок. Зміст є у тому, що ми дотримуємось багатошарової архітектури, за якої кожен блок є незалежним та замінним. Якщо би ми перехоплювали помилки лише в одному з шарів, то правило взаємозамінності би не працювало, тому розмірковуйте про кожен шар максимально абстрактно й незалежно.
+
+
+<div class="bubble small subtle">
+
+  [Репозиторій з кодом цього блоку](https://github.com/binary-studio-academy/stage-2-express-yourself-with-nodejs)
+
+</div>
+
+<br />
+
+<Level
+  id="finish"
+  number="7"
+  name="Висновок"
+  difficulty="Як прохолодна вода у літній день ― довгоочікуване полегшення."
+  objectives="Почитати, відпочити, почекати півчаса й почати лекцію спочатку"
+/>
+
+<VideoWrapper duration="30 сек">
+  <iframe src="https://www.youtube.com/embed/8ZTQy-ezIwI?start=1698&end=1726" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+</VideoWrapper>
+
+Все, вітаю! Лекція повністю проскролена, більше нічого не потрібно читати. Швиденько переходь на вкладки, які ти повідкривав під час лекції (сподіваюсь не Facebook), і ознайомлюйся з додатковими матеріалами. Потім - дай собі відпочити. Півчасика... так-так, дедлайни й таке інше, але це буде трохи більш ефективно, якщо ти даси перепочинок своїй голові, для того, щоб розкласти все по поличкам, а потім повертайся назад і приступай до домашнього завдання.
+
+<Level
+  id="special"
+  number="8"
+  name="Бонус"
+  difficulty="Як в армії ― все виходить, якшо дотримуватись інструкціям"
+  objectives="Задеплоїти Node.js додаток на Heroku"
+/>
+
+Мені тут розповіли, що ви все вмієте деплоїти клієнтські додатки, так чому б не навчитися публіковати сервери на Node.js 😉? 
+
+<VideoWrapper duration="1 хв 50 сек">
+  <iframe src="https://www.youtube.com/embed/8ZTQy-ezIwI?start=1743&end=1847" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+</VideoWrapper>
+
+
+<ThatsAllFolks
+  source={audio}
+>
+  <b>The End!</b>
+</ThatsAllFolks>
+<div class="bubble">
+  	Залишай питання та відгуки в особистому кабінеті <a href="https://academy.binary-studio.com/"><strong>Binary Studio Academy</strong></a>. Хай щастить з домашкою і не забувай про дедлайни 😉 
+</div>
+
+export const metadata = {
+  orderId: 6,
+  author: "Олександр Товмач",
+  title: "Express yourself with Node.js",
+  description: "Олександр розповість ghо мікросервісах у вебі, як працювати з бекендом за допомогою <strong>Node.js</strong>, покаже як налаштувати необхідні інструменти і на <strong>Express.js</strong> підніме сервер, здатний опрацьовувати запити і дані.",
+  keywords: ["nodejs", "alexandrtovmach", "lecture-3"],
+  duration: "31 мин",
+  publishedAt: "2021-05-10T00:00:00",
+  hiddenFromMainPage: true,
+}
+
+export default Lecture;
